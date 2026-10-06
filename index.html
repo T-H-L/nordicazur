@@ -3,38 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NordicAzur | Property Care & Private Concierge Riviera</title>
+  <title>NordicAzur | Property Care & Concierge Services On The French Riviera</title>
   <style>
     :root {
-      --primary: #0f172a;
-      --primary-light: #1e293b;
-      --accent: #d97706;
-      --accent-hover: #b45309;
-      --text: #334155;
+      --primary: #0a1120;
+      --primary-light: #162238;
+      --gold: #d4af37;
+      --gold-hover: #b89628;
+      --azure: #38bdf8;
+      --text: #cbd5e1;
       --text-light: #f8fafc;
       --bg-light: #f1f5f9;
       --white: #ffffff;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Cinzel', 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
       color: var(--text);
-      background-color: var(--white);
+      background-color: var(--primary);
       line-height: 1.6;
     }
 
-    /* Top Navigation & Header */
+    /* Header & Navigation */
     header {
       background-color: var(--primary);
       color: var(--text-light);
-      padding: 1rem 2rem;
+      padding: 1.2rem 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -42,30 +43,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       text-decoration: none;
-      color: var(--text-light);
     }
 
     .logo-svg {
-      width: 42px;
-      height: 42px;
-    }
-
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--white);
-    }
-
-    .logo-text span {
-      color: var(--accent);
+      height: 50px;
+      width: auto;
     }
 
     nav {
@@ -79,35 +69,29 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--gold);
     }
 
     /* Language Switcher Dropdown */
-    .lang-switcher {
-      position: relative;
-    }
-
-    select#language-select {
+    .lang-switcher select {
       background-color: var(--primary-light);
       color: var(--text-light);
-      border: 1px solid var(--accent);
+      border: 1px solid var(--gold);
       padding: 0.5rem 1rem;
-      border-radius: 6px;
+      border-radius: 4px;
       font-size: 0.9rem;
       cursor: pointer;
       outline: none;
     }
 
-    select#language-select:hover {
-      border-color: var(--white);
-    }
-
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+      background: linear-gradient(rgba(10, 17, 32, 0.85), rgba(10, 17, 32, 0.85)), 
                   url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color: var(--white);
       padding: 8rem 2rem 6rem;
@@ -115,44 +99,49 @@
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       margin-bottom: 1rem;
-      font-weight: 800;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--gold);
     }
 
     .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      color: #cbd5e1;
+      font-size: 1.2rem;
+      max-width: 750px;
+      margin: 0 auto 2.5rem;
+      color: var(--text);
     }
 
     .btn {
       display: inline-block;
-      background-color: var(--accent);
-      color: var(--white);
-      padding: 0.8rem 2rem;
-      border-radius: 6px;
+      background-color: var(--gold);
+      color: var(--primary);
+      padding: 0.8rem 2.2rem;
+      border-radius: 4px;
       text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.2s;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: background-color 0.2s, transform 0.2s;
     }
 
     .btn:hover {
-      background-color: var(--accent-hover);
+      background-color: var(--gold-hover);
+      transform: translateY(-2px);
     }
 
     /* Features Section */
     .features {
       padding: 5rem 2rem;
-      background-color: var(--bg-light);
+      background-color: var(--primary-light);
       text-align: center;
     }
 
     .section-title {
-      font-size: 2.25rem;
+      font-size: 2.2rem;
       margin-bottom: 3rem;
-      color: var(--primary);
+      color: var(--gold);
+      letter-spacing: 1px;
     }
 
     .grid {
@@ -164,9 +153,10 @@
     }
 
     .card {
-      background: var(--white);
+      background: var(--primary);
       padding: 2.5rem 1.5rem;
-      border-radius: 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
       box-shadow: var(--shadow);
       text-align: left;
     }
@@ -174,13 +164,12 @@
     .card-icon {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: var(--accent);
     }
 
     .card h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       margin-bottom: 0.75rem;
-      color: var(--primary);
+      color: var(--gold);
     }
 
     /* Services & Pricing Tiers */
@@ -198,45 +187,44 @@
     }
 
     .price-card {
-      border: 2px solid #e2e8f0;
-      border-radius: 10px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 6px;
       padding: 2.5rem 2rem;
-      background: var(--white);
+      background: var(--primary-light);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s, border-color 0.2s;
     }
 
     .price-card.featured {
-      border-color: var(--accent);
+      border-color: var(--gold);
       position: relative;
-      box-shadow: var(--shadow);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
     }
 
     .badge {
       position: absolute;
       top: -12px;
       right: 20px;
-      background: var(--accent);
-      color: var(--white);
+      background: var(--gold);
+      color: var(--primary);
       padding: 2px 12px;
-      font-size: 0.8rem;
-      border-radius: 12px;
-      font-weight: 600;
+      font-size: 0.75rem;
+      border-radius: 4px;
+      font-weight: 700;
       text-transform: uppercase;
     }
 
     .price {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--gold);
       margin: 1rem 0;
     }
 
     .price span {
-      font-size: 1rem;
-      color: #64748b;
+      font-size: 0.9rem;
+      color: var(--text);
       font-weight: 400;
     }
 
@@ -254,30 +242,32 @@
 
     .price-features li::before {
       content: "✓";
-      color: var(--accent);
+      color: var(--gold);
       font-weight: bold;
     }
 
     /* Contact Section */
     .contact {
-      background-color: var(--primary);
+      background-color: var(--primary-light);
       color: var(--white);
       padding: 5rem 2rem;
       text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .contact p {
-      margin-bottom: 2rem;
-      color: #94a3b8;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
 
     /* Footer */
     footer {
-      background-color: #020617;
+      background-color: var(--primary);
       color: #64748b;
       padding: 2rem;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     @media (max-width: 768px) {
@@ -286,24 +276,23 @@
         gap: 1rem;
       }
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.1rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header & Navigation -->
+  <!-- Header med det rigtige NordicAzur Logo -->
   <header>
     <a href="#" class="logo-container">
-      <!-- NordicAzur Logo Concept SVG -->
-      <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="45" stroke="#d97706" stroke-width="4" fill="#0f172a" />
-        <path d="M50 20 L75 42 L65 42 L65 75 L35 75 L35 42 L25 42 Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
-        <path d="M20 70 Q50 60 80 70 Q50 80 20 70 Z" fill="#d97706" opacity="0.8" />
-        <path d="M40 38 L50 28 L60 38" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
+      <svg class="logo-svg" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 20 85 Q 45 78 70 85 T 120 85" stroke="#d4af37" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M 30 95 Q 55 88 80 95 T 130 95" stroke="#d4af37" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M 130 85 L 130 50 L 165 20 L 200 50 L 200 75 L 245 42 L 270 65 L 255 78 L 280 85 L 310 85" stroke="#d4af37" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 245 78 L 260 55 L 285 85" stroke="#d4af37" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
+        <text x="35" y="140" font-family="'Cinzel', Georgia, serif" font-size="54" font-weight="600" fill="#d4af37" letter-spacing="1.5">Nordic<tspan fill="#38bdf8">Azur</tspan></text>
       </svg>
-      <div class="logo-text">NORDIC<span>AZUR</span></div>
     </a>
 
     <nav>
@@ -311,7 +300,6 @@
       <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
       
-      <!-- Sprogvælger: Engelsk øverst, derefter alfabetisk -->
       <div class="lang-switcher">
         <select id="language-select" onchange="changeLanguage(this.value)">
           <option value="en" selected>🇬🇧 English</option>
@@ -331,8 +319,8 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <h1 data-i18n="hero_title">Property Stewardship & Private Concierge</h1>
-    <p data-i18n="hero_subtitle">Complete peace of mind for international villa owners in Vence, Saint-Paul-de-Vence, and the French Riviera hinterland.</p>
+    <h1 data-i18n="hero_title">Property Care & Concierge Services</h1>
+    <p data-i18n="hero_subtitle">Complete peace of mind for international villa owners in Vence, Saint-Paul-de-Vence, and across the French Riviera.</p>
     <a href="#contact" class="btn" data-i18n="hero_cta">Request Consultation</a>
   </section>
 
@@ -367,7 +355,7 @@
       <div class="price-card">
         <div>
           <h3 data-i18n="tier1_title">Essential Inspection</h3>
-          <div class="price">€130 – €180 <span>/ month</span></div>
+          <div class="price">€130 – €180 <span data-i18n="per_month">/ month</span></div>
           <ul class="price-features">
             <li data-i18n="tier1_f1">2 physical property checks / month</li>
             <li data-i18n="tier1_f2">Secure keyholding & mail forwarding</li>
@@ -384,7 +372,7 @@
         <div class="badge" data-i18n="popular_badge">Most Popular</div>
         <div>
           <h3 data-i18n="tier2_title">Comfort Home</h3>
-          <div class="price">€280 – €390 <span>/ month</span></div>
+          <div class="price">€280 – €390 <span data-i18n="per_month">/ month</span></div>
           <ul class="price-features">
             <li data-i18n="tier2_f1">4 weekly inspections per month</li>
             <li data-i18n="tier2_f2">All Essential Tier features included</li>
@@ -401,7 +389,7 @@
       <div class="price-card">
         <div>
           <h3 data-i18n="tier3_title">Premium Rental Care</h3>
-          <div class="price">€200 <span>/ mo base</span></div>
+          <div class="price">€200 <span data-i18n="per_month_base">/ mo base</span></div>
           <ul class="price-features">
             <li data-i18n="tier3_f1">Keyhandling & 24/7 guest helpline</li>
             <li data-i18n="tier3_f2">Pre-stay staging & post-stay inspection</li>
@@ -417,28 +405,27 @@
 
   <!-- Contact Section -->
   <section class="contact" id="contact">
-    <h2 class="section-title" style="color: var(--white);" data-i18n="contact_title">Get in Touch</h2>
+    <h2 class="section-title" data-i18n="contact_title">Get in Touch</h2>
     <p data-i18n="contact_subtitle">Let us handle your property care in Vence and surrounding areas.</p>
-    <p style="font-size: 1.2rem; font-weight: bold; color: var(--accent);">
+    <p style="font-size: 1.1rem; font-weight: bold; color: var(--gold);">
       📍 Vence, Côte d'Azur, France | 📧 contact@nordicazur.com
     </p>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2026 NordicAzur. All rights reserved. | Private Property Stewardship & Concierge
+    &copy; 2026 NordicAzur. All rights reserved. | Property Care & Concierge Services On The French Riviera
   </footer>
 
   <!-- JavaScript Translation Engine -->
   <script>
-    // 1. DINE TRANSLATION DICTIONARIES (Default: English)
     const i18nTranslations = {
       en: {
         nav_services: "Services",
         nav_pricing: "Pricing",
         nav_contact: "Contact",
-        hero_title: "Property Stewardship & Private Concierge",
-        hero_subtitle: "Complete peace of mind for international villa owners in Vence, Saint-Paul-de-Vence, and the French Riviera hinterland.",
+        hero_title: "Property Care & Concierge Services",
+        hero_subtitle: "Complete peace of mind for international villa owners in Vence, Saint-Paul-de-Vence, and across the French Riviera.",
         hero_cta: "Request Consultation",
         features_title: "Why Choose NordicAzur?",
         feat_1_title: "Multilingual Bridge",
@@ -448,6 +435,8 @@
         feat_3_title: "Hyper-Local Presence",
         feat_3_desc: "Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.",
         pricing_title: "Tailored Care Packages",
+        per_month: "/ month",
+        per_month_base: "/ mo base",
         tier1_title: "Essential Inspection",
         tier1_f1: "2 physical property checks / month",
         tier1_f2: "Secure keyholding & mail forwarding",
@@ -459,204 +448,4 @@
         tier2_f2: "All Essential Tier features included",
         tier2_f3: "Pre-arrival preparation & heating/AC setup",
         tier2_f4: "Post-departure walkthrough & lockdown",
-        tier2_f5: "Potted plant care & irrigation checks",
-        tier2_f6: "2 hrs/mo contractor coordination",
-        tier3_title: "Premium Rental Care",
-        tier3_f1: "Keyhandling & 24/7 guest helpline",
-        tier3_f2: "Pre-stay staging & post-stay inspection",
-        tier3_f3: "Cleaning & linen team oversight",
-        tier3_f4: "+ €120–€180 per guest turnaround",
-        popular_badge: "Most Popular",
-        select_plan: "Select Plan",
-        contact_title: "Get in Touch",
-        contact_subtitle: "Let us handle your property care in Vence and surrounding areas."
-      },
-      da: {
-        nav_services: "Tjenester",
-        nav_pricing: "Priser",
-        nav_contact: "Kontakt",
-        hero_title: "Ejendomstilsyn & Privat Concierge",
-        hero_subtitle: "Komplet tryghed for internationale villaejere i Vence, Saint-Paul-de-Vence og baglandet på Den Franske Riviera.",
-        hero_cta: "Anmod om rådgivning",
-        features_title: "Hvorfor vælge NordicAzur?",
-        feat_1_title: "Flersproget bindeled",
-        feat_1_desc: "Flydende skandinavisk og engelsk kombineret med lokal fransk erfaring. Ingen sprogbarrierer med håndværkere.",
-        feat_2_title: "Digitale fotorapporter",
-        feat_2_desc: "Modtag overskuelige foto- og videorapporter direkte på din mobil efter hvert inspectionstilsyn.",
-        feat_3_title: "Lokal tilstedeværelse",
-        feat_3_desc: "Baseret i Vence med hurtig responstid ved stormvarsler, nødsituationer og nøgleopbevaring.",
-        pricing_title: "Skræddersyede pakker",
-        tier1_title: "Essential Tilsyn",
-        tier1_f1: "2 fysiske ejendomstilsyn om måneden",
-        tier1_f2: "Sikker nøgleopbevaring & posthåndtering",
-        tier1_f3: "Storm- og vejrtjek efter uvejr",
-        tier1_f4: "Gennemgennemstrømning af vand & aflæsning",
-        tier1_f5: "Digital fotorapport efter hvert besøg",
-        tier2_title: "Comfort Home",
-        tier2_f1: "4 ugentlige tilsyn om måneden",
-        tier2_f2: "Alle Essential-funktioner inkluderet",
-        tier2_f3: "Klargøring før ankomst & klimastyring",
-        tier2_f4: "Tjek & nedlukning efter afrejse",
-        tier2_f5: "Vanding af krukker & tjek af afvanding",
-        tier2_f6: "Op til 2 timers håndværkerkoordinering",
-        tier3_title: "Premium Udlejning",
-        tier3_f1: "Nøglehåndtering & 24/7 gæstesupport",
-        tier3_f2: "Klargøring før ophold & tjek efter afrejse",
-        tier3_f3: "Opsyn med rengøring og linned",
-        tier3_f4: "+ €120–€180 pr. gæsteskift",
-        popular_badge: "Mest populær",
-        select_plan: "Vælg pakke",
-        contact_title: "Kontakt os",
-        contact_subtitle: "Lad os passe godt på din ejendom i Vence og omegn."
-      },
-      de: {
-        nav_services: "Dienstleistungen",
-        nav_pricing: "Preise",
-        nav_contact: "Kontakt",
-        hero_title: "Immobilienbetreuung & Privater Concierge",
-        hero_subtitle: "Sorgenfreie Betreuung für internationale Villenbesitzer in Vence und an der Côte d'Azur.",
-        hero_cta: "Beratung anfordern",
-        features_title: "Warum NordicAzur?",
-        feat_1_title: "Mehrsprachige Brücke",
-        feat_1_desc: "Fließendes Skandinavisch und Englisch kombiniert mit lokaler französischer Expertise.",
-        pricing_title: "Maßgeschneiderte Pakete",
-        popular_badge: "Beliebtestes Paket",
-        select_plan: "Paket wählen",
-        contact_title: "Kontaktieren Sie uns"
-      },
-      fi: {
-        nav_services: "Palvelut",
-        nav_pricing: "Hinnasto",
-        nav_contact: "Ota yhteyttä",
-        hero_title: "Kiinteistönhoito & Yksityinen Concierge",
-        hero_subtitle: "Täydellinen mielenrauha kansainvälisille huvilanomistajille Vencessä ja Ranskan Rivieralla.",
-        hero_cta: "Pyydä konsultaatio",
-        features_title: "Miksi valita NordicAzur?",
-        pricing_title: "Räätälöidyt paketit",
-        popular_badge: "Suosituin",
-        select_plan: "Valitse paketti",
-        contact_title: "Ota yhteyttä"
-      },
-      fr: {
-        nav_services: "Services",
-        nav_pricing: "Tarifs",
-        nav_contact: "Contact",
-        hero_title: "Intendance de Propriété & Concierge Privé",
-        hero_subtitle: "Sérénité absolue pour propriétaires internationaux à Vence, Saint-Paul-de-Vence et la Côte d'Azur.",
-        hero_cta: "Demander une consultation",
-        features_title: "Pourquoi choisir NordicAzur ?",
-        feat_1_title: "Pont multilingue",
-        feat_1_desc: "Maîtrise du scandinave, de l'anglais et du français opérationnel local.",
-        pricing_title: "Nos Formules",
-        popular_badge: "Le Plus Populaire",
-        select_plan: "Sélectionner",
-        contact_title: "Contactez-nous"
-      },
-      it: {
-        nav_services: "Servizi",
-        nav_pricing: "Prezzi",
-        nav_contact: "Contatti",
-        hero_title: "Gestione Proprietà & Concierge Privato",
-        hero_subtitle: "Tranquillità assoluta per i proprietari di ville a Vence e sulla Costa Azzurra.",
-        hero_cta: "Richiedi una consulenza",
-        features_title: "Perché scegliere NordicAzur?",
-        pricing_title: "Pacchetti Su Misura",
-        popular_badge: "Più Popolare",
-        select_plan: "Seleziona",
-        contact_title: "Contattaci"
-      },
-      nl: {
-        nav_services: "Diensten",
-        nav_pricing: "Prijzen",
-        nav_contact: "Contact",
-        hero_title: "Vastgoedbeheer & Private Concierge",
-        hero_subtitle: "Zorgeloos beheer voor internationale huiseigenaren in Vence en de Franse Rivièra.",
-        hero_cta: "Consultatie aanvragen",
-        features_title: "Waarom kiezen voor NordicAzur?",
-        pricing_title: "Pakketen op maat",
-        popular_badge: "Meest Populair",
-        select_plan: "Kies Pakket",
-        contact_title: "Neem contact op"
-      },
-      no: {
-        nav_services: "Tjenester",
-        nav_pricing: "Priser",
-        nav_contact: "Kontakt",
-        hero_title: "Eiendomstilsyn & Privat Concierge",
-        hero_subtitle: "Full trygghet for internasjonale villaeiere i Vence, Saint-Paul-de-Vence og Den franske rivieraen.",
-        hero_cta: "Kontakt oss",
-        features_title: "Hvorfor velge NordicAzur?",
-        feat_1_title: "Flerspråklig bro",
-        feat_1_desc: "Flytende skandinavisk og engelsk kombinert med lokal fransk kompetanse.",
-        pricing_title: "Tilpassede pakker",
-        popular_badge: "Mest populær",
-        select_plan: "Velg pakke",
-        contact_title: "Ta kontakt"
-      },
-      ru: {
-        nav_services: "Услуги",
-        nav_pricing: "Цены",
-        nav_contact: "Контакты",
-        hero_title: "Управление недвижимостью и Консьерж-сервис",
-        hero_subtitle: "Полное спокойствие для владельцев вилл в Вансе и на Лазурном Берегу.",
-        hero_cta: "Запросить консультацию",
-        features_title: "Почему NordicAzur?",
-        pricing_title: "Тарифные пакеты",
-        popular_badge: "Самый популярный",
-        select_plan: "Выбрать",
-        contact_title: "Связаться с нами"
-      },
-      sv: {
-        nav_services: "Tjänster",
-        nav_pricing: "Priser",
-        nav_contact: "Kontakt",
-        hero_title: "Fastighetstillsyn & Privat Concierge",
-        hero_subtitle: "Komplett trygghet för internationella villaägare i Vence och Franska Rivieran.",
-        hero_cta: "Boka konsultation",
-        features_title: "Varför välja NordicAzur?",
-        pricing_title: "Skräddarsydda paket",
-        popular_badge: "Mest populär",
-        select_plan: "Välj paket",
-        contact_title: "Kontakta oss"
-      }
-    };
-
-    const supportedLanguages = ['en', 'da', 'de', 'fi', 'fr', 'it', 'nl', 'no', 'ru', 'sv'];
-
-    // 2. AUTOMATISK BROWSER-SPROGDETEKTERING
-    function detectUserLanguage() {
-      const browserLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2).toLowerCase();
-      return supportedLanguages.includes(browserLang) ? browserLang : 'en';
-    }
-
-    // 3. SKIFT SPROG OG OPDATER INDHOLD
-    function changeLanguage(lang) {
-      document.documentElement.lang = lang;
-      
-      const select = document.getElementById('language-select');
-      if (select) select.value = lang;
-
-      const elements = document.querySelectorAll('[data-i18n]');
-      
-      elements.forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        
-        // Vælg det valgte sprog, ellers brug engelsk ('en') som fallback
-        let translation = (i18nTranslations[lang] && i18nTranslations[lang][key]) 
-                          ? i18nTranslations[lang][key] 
-                          : i18nTranslations['en'][key];
-        
-        if (translation) {
-          element.innerText = translation;
-        }
-      });
-    }
-
-    // 4. KØR DETEKTERING NÅR SIDEN INDLÆSES
-    document.addEventListener('DOMContentLoaded', () => {
-      const initialLang = detectUserLanguage();
-      changeLanguage(initialLang);
-    });
-  </script>
-</body>
-</html>
+        tier2_f
