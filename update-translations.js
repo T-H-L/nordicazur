@@ -9,7 +9,6 @@ if (!DEEPL_API_KEY) {
   process.exit(1);
 }
 
-// Funktion til at kalde DeepL API
 function translateText(text, targetLang) {
   return new Promise((resolve, reject) => {
     const data = new URLSearchParams({
@@ -56,7 +55,6 @@ function translateText(text, targetLang) {
 async function run() {
   let content = fs.readFileSync(HTML_FILE, 'utf8');
 
-  // Fleksibel RegEx der fanger i18nTranslations uanset mellemrum/linjeskift
   const regex = /(const\s+i18nTranslations\s*=\s*)({[\s\S]*?});/;
   const match = content.match(regex);
 
@@ -76,35 +74,29 @@ async function run() {
   const enKeys = translations.en || {};
   const languages = ['da', 'fr', 'nl', 'de', 'sv', 'no'];
 
-  console.log("Starter oversættelse af nye/ændrede nøgler...");
+  console.log("Tvinger genoversættelse af alle nøgler ud fra 'en'...");
 
-  // --- HER ER DET INDSAT ---
   for (const lang of languages) {
     if (!translations[lang]) translations[lang] = {};
 
     for (const [key, enValue] of Object.entries(enKeys)) {
-      const currentTranslation = translations[lang][key];
-
-      if (!currentTranslation || currentTranslation === enValue) {
-        try {
-          const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
-          const translatedText = await translateText(enValue, deeplLang);
-          translations[lang][key] = translatedText;
-          console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
-        } catch (err) {
-          console.error(`Fejl ved oversættelse af ${key} til ${lang}:`, err);
-        }
+      try {
+        const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
+        // Henter ALTID frisk oversættelse direkte fra DeepL
+        const translatedText = await translateText(enValue, deeplLang);
+        translations[lang][key] = translatedText;
+        console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
+      } catch (err) {
+        console.error(`Fejl ved oversættelse af ${key} til ${lang}:`, err);
       }
     }
   }
-  // --------------------------
 
-  // Gem det opdaterede objekt tilbage i index.html
   const updatedTranslationsJs = JSON.stringify(translations, null, 2);
   const updatedContent = content.replace(regex, `$1${updatedTranslationsJs};`);
 
   fs.writeFileSync(HTML_FILE, updatedContent, 'utf8');
-  console.log("Succes! index.html er opdateret med nye oversættelser.");
+  console.log("Succes! Alle sprog i index.html er nu opdateret automatisk.");
 }
 
 run();
