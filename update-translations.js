@@ -1,83 +1,109 @@
-const axios = require('axios');
-
-// Indsæt din DeepL API-nøgle her:
-const DEEPL_API_KEY = 'dbbd0c0a-3eac-4d45-9770-171cfb077fbb:fx';
 const fs = require('fs');
-// MAPPING: Nøgler fra din index.html til DeepL sprogkoder
-const languageMap = {
-  fr: 'FR',
-  da: 'DA',
-  de: 'DE',
-  nl: 'NL',
-  no: 'NB', // DeepL bruger NB for norsk bokmål
-  sv: 'SV',
-  it: 'IT',
-  es: 'ES',
-  fi: 'FI',
-  pl: 'PL'
-};
+const https = require('https');
 
-async function translateText(text, targetLang) {
-  try {
-    const response = await axios.post(
-      'https://api-free.deepl.com/v2/translate',
-      new URLSearchParams({
-        auth_key: DEEPL_API_KEY,
-        text: text,
-        target_lang: targetLang,
-        source_lang: 'EN'
-      })
-    );
-    return response.data.translations[0].text;
-  } catch (error) {
-    console.error(`Fejl ved oversættelse til ${targetLang}:`, error.message);
-    return text;
-  }
+const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
+const HTML_FILE = 'index.html';
+
+if (!DEEPL_API_KEY) {
+  console.error("Fejl: DEEPL_API_KEY mangler.");
+  process.exit(1);
 }
 
-async function updateIndexHtml() {
-  const filePath = './index.html';
-  let htmlContent = fs.readFileSync(filePath, 'utf8');
+// Funktion til at kalde DeepL API
+function translateText(text, targetLang) {
+  return new Promise((resolve, reject) => {
+    const data = new URLSearchParams({
+      auth_key: DEEPL_API_KEY,
+      text: text,
+      target_lang: targetLang.toUpperCase(),
+      source_lang: 'EN'
+    }).toString();
 
-  // Find 'translations' objektet i din index.html
-  const match = htmlContent.match(/const translations = (\{[\s\S]*?\});/);
+    const options = {
+      hostname: DEEPL_API_KEY.endsWith(':fx') ? 'api-free.deepl.com' : 'api.deepl.com',
+      port: 443,
+      path: '/v2/translate',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': Buffer.byteLength(data)
+      }
+    };
+
+    const req = https.request(options, (res) => {
+      let body = '';
+      res.on('data', (chunk) => body += chunk);
+      res.on('end', () => {
+        try {
+          const parsed = JSON.parse(body);
+          if (parsed.translations && parsed.translations[0]) {
+            resolve(parsed.translations[0].text);
+          } else {
+            reject(`Fejl fra DeepL API: ${body}`);
+          }
+        } catch (e) {
+          reject(`Kunne ikke parse DeepL svar: ${body}`);
+        }
+      });
+    });
+
+    req.on('error', (e) => reject(e));
+    req.write(data);
+    req.end();
+  });
+}
+
+async function run() {
+  let content = fs.readFileSync(HTML_FILE, 'utf8');
+
+  // Fleksibel RegEx der fanger i18nTranslations uanset mellemrum/linjeskift
+  const regex = /(const\s+i18nTranslations\s*=\s*)({[\s\S]*?});/;
+  const match = content.match(regex);
+
   if (!match) {
-    console.error('Kunne ikke finde translations-objektet i index.html');
-    return;
+    console.error("Kunne ikke finde translations-objektet i index.html");
+    process.exit(1);
   }
 
-  // Evaluér og læs det eksisterende translations-objekt
-  const translationsText = match[1];
   let translations;
-  eval(`translations = ${translationsText}`);
-
-  const englishDict = translations.en;
-  if (!englishDict) {
-    console.error('Mangler engelsk (en) som kildesprog i translations!');
-    return;
+  try {
+    // Evaluerer objektet sikkert fra strengen
+    translations = eval('(' + match[2] + ')');
+  } catch (e) {
+    console.error("Fejl ved læsning af i18nTranslations JSON/JS struktur:", e);
+    process.exit(1);
   }
 
-  console.log('Startede automatisk oversættelse ud fra engelsk...\n');
+  const enKeys = translations.en || {};
+  const languages = ['da', 'fr', 'nl', 'de', 'sv', 'no'];
 
-  for (const [langKey, deeplCode] of Object.entries(languageMap)) {
-    if (!translations[langKey]) translations[langKey] = {};
-    console.log(`Oversætter til ${langKey.toUpperCase()}...`);
+  console.log("Starter oversættelse af nye/ændrede nøgler...");
 
-    for (const [key, englishText] of Object.entries(englishDict)) {
-      // Oversætter den engelske tekst
-      translations[langKey][key] = await translateText(englishText, deeplCode);
+  for (const lang of languages) {
+    if (!translations[lang]) translations[lang] = {};
+
+    for (const [key, enValue] of Object.entries(enKeys)) {
+      // Tjek om teksten er ændret eller mangler
+      if (!translations[lang][key] || translations[lang][key] === enValue) {
+        try {
+          // DeepL bruger "DA", "FR", "NL", "DE", "SV", "NB" (for norsk)
+          const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
+          const translatedText = await translateText(enValue, deeplLang);
+          translations[lang][key] = translatedText;
+          console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
+        } catch (err) {
+          console.error(`Fejl ved oversættelse af ${key} til ${lang}:`, err);
+        }
+      }
     }
   }
 
-  // Erstat den gamle translations-blok i index.html med den opdaterede
-  const updatedTranslationsJson = JSON.stringify(translations, null, 2);
-  const newHtmlContent = htmlContent.replace(
-    /const translations = \{[\s\S]*?\};/,
-    `const translations = ${updatedTranslationsJson};`
-  );
+  // Gem det opdaterede objekt tilbage i index.html
+  const updatedTranslationsJs = JSON.stringify(translations, null, 2);
+  const updatedContent = content.replace(regex, `$1${updatedTranslationsJs};`);
 
-  fs.writeFileSync(filePath, newHtmlContent, 'utf8');
-  console.log('\n Succes! index.html er nu opdateret med de nye oversættelser på alle sprog.');
+  fs.writeFileSync(HTML_FILE, updatedContent, 'utf8');
+  console.log("Succes! index.html er opdateret med nye oversættelser.");
 }
 
-updateIndexHtml();
+run();
