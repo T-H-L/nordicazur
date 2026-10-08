@@ -67,7 +67,6 @@ async function run() {
 
   let translations;
   try {
-    // Evaluerer objektet sikkert fra strengen
     translations = eval('(' + match[2] + ')');
   } catch (e) {
     console.error("Fejl ved læsning af i18nTranslations JSON/JS struktur:", e);
@@ -79,14 +78,15 @@ async function run() {
 
   console.log("Starter oversættelse af nye/ændrede nøgler...");
 
+  // --- HER ER DET INDSAT ---
   for (const lang of languages) {
     if (!translations[lang]) translations[lang] = {};
 
     for (const [key, enValue] of Object.entries(enKeys)) {
-      // Tjek om teksten er ændret eller mangler
-      if (!translations[lang][key] || translations[lang][key] === enValue) {
+      const currentTranslation = translations[lang][key];
+
+      if (!currentTranslation || currentTranslation === enValue) {
         try {
-          // DeepL bruger "DA", "FR", "NL", "DE", "SV", "NB" (for norsk)
           const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
           const translatedText = await translateText(enValue, deeplLang);
           translations[lang][key] = translatedText;
@@ -97,6 +97,7 @@ async function run() {
       }
     }
   }
+  // --------------------------
 
   // Gem det opdaterede objekt tilbage i index.html
   const updatedTranslationsJs = JSON.stringify(translations, null, 2);
