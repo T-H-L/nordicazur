@@ -284,15 +284,16 @@
 <body>
 
   <!-- Header med NordicAzur Logo -->
-  <header>
-<a href="#" class="logo-container" style="background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; display: flex; align-items: center;">
-  <img src="35030.png" alt="NordicAzur Logo" style="height: 80px; width: auto; max-height: none; filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.85)); display: block;">
-</a>
+<header style="background-color: #ffffff !important; padding: 12px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center;">
+  <a href="#" class="logo-container" style="background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; display: flex; align-items: center;">
+    <img src="35030.png" alt="NordicAzur Logo" style="height: 70px; width: auto; display: block;">
+  </a>
 
-    <nav>
-      <a href="#services" data-i18n="nav_services">Services</a>
-      <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
+  <nav style="display: flex; gap: 20px; align-items: center;">
+    <a href="#services" data-i18n="nav_services" style="color: #0f172a !important; font-weight: 600; text-decoration: none;">Services</a>
+    <a href="#pricing" data-i18n="nav_pricing" style="color: #0f172a !important; font-weight: 600; text-decoration: none;">Pricing</a>
+    <a href="#contact" data-i18n="nav_contact" style="color: #0f172a !important; font-weight: 600; text-decoration: none;">Contact</a>
+  </nav>
       
       <div class="lang-switcher">
         <select id="language-select" onchange="changeLanguage(this.value)">
