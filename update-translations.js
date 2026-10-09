@@ -55,26 +55,38 @@ function translateText(text, targetLang) {
 async function run() {
   let content = fs.readFileSync(HTML_FILE, 'utf8');
 
-  const regex = /(const\s+i18nTranslations\s*=\s*)({[\s\S]*?});/;
-  const match = content.match(regex);
+  // Matcher selve i18nTranslations blokken mere præcist
+  const startMarker = 'const i18nTranslations =';
+  const startIndex = content.indexOf(startMarker);
 
-  if (!match) {
-    console.error("Kunne ikke finde translations-objektet i index.html");
+  if (startIndex === -1) {
+    console.error("Kunne ikke finde i18nTranslations i index.html");
     process.exit(1);
   }
 
+  const jsonStart = content.indexOf('{', startIndex);
+  const jsonEnd = content.indexOf('};', jsonStart);
+
+  if (jsonStart === -1 || jsonEnd === -1) {
+    console.error("Kunne ikke afgrænse i18nTranslations objektet korrekt.");
+    process.exit(1);
+  }
+
+  const rawObjectStr = content.substring(jsonStart, jsonEnd + 1);
+
   let translations;
   try {
-    translations = eval('(' + match[2] + ')');
+    // Evaluerer JS-objektet sikkert
+    translations = Function('"use strict";return (' + rawObjectStr + ')')();
   } catch (e) {
-    console.error("Fejl ved læsning af i18nTranslations JSON/JS struktur:", e);
+    console.error("Syntaksfejl ved indlæsning af i18nTranslations:", e);
     process.exit(1);
   }
 
   const enKeys = translations.en || {};
   const languages = ['da', 'fr', 'nl', 'de', 'sv', 'no'];
 
-  console.log("Tvinger genoversættelse af alle nøgler ud fra 'en'...");
+  console.log("Kører fuld opdatering af sprog ud fra 'en'...");
 
   for (const lang of languages) {
     if (!translations[lang]) translations[lang] = {};
@@ -82,7 +94,6 @@ async function run() {
     for (const [key, enValue] of Object.entries(enKeys)) {
       try {
         const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
-        // Henter ALTID frisk oversættelse direkte fra DeepL
         const translatedText = await translateText(enValue, deeplLang);
         translations[lang][key] = translatedText;
         console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
@@ -92,11 +103,12 @@ async function run() {
     }
   }
 
-  const updatedTranslationsJs = JSON.stringify(translations, null, 2);
-  const updatedContent = content.replace(regex, `$1${updatedTranslationsJs};`);
+  // Formaterer objektet pænt med JavaScript-syntaks
+  const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
+  const updatedContent = content.substring(0, startIndex) + updatedJs + content.substring(jsonEnd + 2);
 
   fs.writeFileSync(HTML_FILE, updatedContent, 'utf8');
-  console.log("Succes! Alle sprog i index.html er nu opdateret automatisk.");
+  console.log("Succes! index.html er opdateret med alle oversættelser.");
 }
 
 run();
