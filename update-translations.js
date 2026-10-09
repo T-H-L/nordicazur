@@ -12,7 +12,6 @@ if (!DEEPL_API_KEY) {
 function translateText(text, targetLang) {
   return new Promise((resolve, reject) => {
     const data = new URLSearchParams({
-      auth_key: DEEPL_API_KEY,
       text: text,
       target_lang: targetLang.toUpperCase(),
       source_lang: 'EN'
@@ -24,6 +23,7 @@ function translateText(text, targetLang) {
       path: '/v2/translate',
       method: 'POST',
       headers: {
+        'Authorization': `DeepL-Auth-Key ${DEEPL_API_KEY}`,
         'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': Buffer.byteLength(data)
       }
@@ -55,7 +55,6 @@ function translateText(text, targetLang) {
 async function run() {
   let content = fs.readFileSync(HTML_FILE, 'utf8');
 
-  // Matcher selve i18nTranslations blokken mere præcist
   const startMarker = 'const i18nTranslations =';
   const startIndex = content.indexOf(startMarker);
 
@@ -76,7 +75,6 @@ async function run() {
 
   let translations;
   try {
-    // Evaluerer JS-objektet sikkert
     translations = Function('"use strict";return (' + rawObjectStr + ')')();
   } catch (e) {
     console.error("Syntaksfejl ved indlæsning af i18nTranslations:", e);
@@ -103,7 +101,6 @@ async function run() {
     }
   }
 
-  // Formaterer objektet pænt med JavaScript-syntaks
   const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
   const updatedContent = content.substring(0, startIndex) + updatedJs + content.substring(jsonEnd + 2);
 
