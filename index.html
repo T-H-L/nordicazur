@@ -4,144 +4,198 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NordicAzur - Property Care & Concierge Services</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <style>
+    /* Global Styles & Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+    a {
+      color: #eab308;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
-  <!-- Header -->
-  <header>
-    <a href="#" class="logo">
-      <img src="35030.png" alt="NordicAzur Logo">
-    </a>
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background-color: #0b0f19;
+      border-bottom: 1px solid #1e293b;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header img {
+      height: 40px;
+    }
+    nav a {
+      color: #94a3b8;
+      margin: 0 1rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    select {
+      background-color: #1e293b;
+      color: #ffffff;
+      border: 1px solid #334155;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
 
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-    </nav>
-      
-    <div class="language-selector">
-      <select id="lang-select">
-        <option value="en">🇬🇧 English</option>
-        <option value="da">🇩🇰 Dansk</option>
-        <option value="de">🇩🇪 Deutsch</option>
-        <option value="fi">🇫🇮 Suomi</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="it">🇮🇹 Italiano</option>
-        <option value="nl">🇳🇱 Nederlands</option>
-        <option value="no">🇳🇴 Norsk</option>
-        <option value="ru">🇷🇺 Русский</option>
-        <option value="sv">🇸🇪 Svensk</option>
-      </select>
-    </div>
-  </header>
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(180deg, #0b0f19 0%, #0f172a 100%);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+    }
+    .btn-hero {
+      display: inline-block;
+      background-color: #eab308;
+      color: #0f172a;
+      font-weight: bold;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-hero:hover {
+      background-color: #ca8a04;
+      text-decoration: none;
+    }
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Property Care & Concierge Services</h1>
-    <p>Complete peace of mind for international property owners in Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup and across the French Riviera.</p>
-    <a href="#contact" class="btn-hero">Request Consultation</a>
-  </section>
+    /* Sections Shared */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    .section-intro {
+      text-align: center;
+      color: #94a3b8;
+      max-width: 800px;
+      margin: 0 auto 2.5rem auto;
+    }
 
-  <!-- Why Choose NordicAzur Section -->
-  <section id="services" class="why-us">
-    <h2>Why Choose NordicAzur?</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon">🗣️</div>
-        <h3>Multilingual Bridge</h3>
-        <p>Fluent Scandinavian and English communication combined with local French operational expertise. No language barrier with local artisans.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📱</div>
-        <h3>Digital Visual Reports</h3>
-        <p>Receive comprehensive photo and video status updates directly to your phone after every inspection visit.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📍</div>
-        <h3>Hyper-Local Presence</h3>
-        <p>Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.</p>
-      </div>
-    </div>
-  </section>
+    /* Why Us Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature-card {
+      background-color: #1e293b;
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      text-align: center;
+    }
+    .feature-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      color: #f8fafc;
+    }
+    .feature-card p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
 
-  <!-- Pricing Section -->
-  <section id="pricing" class="pricing-section">
-    <h2>Services & Pricing Structure</h2>
-    <p class="section-intro">The business uses a tiered subscription framework supplemented by an à la carte menu to secure baseline cash flow through the off-season while capturing high margin during summer.</p>
+    /* Pricing Section */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      align-items: stretch;
+      margin-top: 2rem;
+    }
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #1e293b;
+      border-radius: 12px;
+      padding: 2rem;
+      color: #ffffff;
+      border: 1px solid #334155;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .pricing-card.featured {
+      border: 2px solid #eab308;
+      position: relative;
+    }
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background-color: #eab308;
+      color: #0f172a;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.2rem 0.8rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+    .card-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .price {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #eab308;
+    }
+    .price span {
+      font-size: 1rem;
+      color: #94a3b8;
+      font-weight: normal;
+    }
+    .commitment {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 0.2rem;
+    }
 
-    <div class="pricing-grid">
-      
-      <!-- Essential Inspection -->
-      <div class="pricing-card">
-        <div class="card-header">
-          <h3>Essential Inspection</h3>
-          <div class="price">€130 – €180 <span>/ month</span></div>
-          <p class="commitment">(Min. 6- or 12-month commitment)</p>
-        </div>
-        <ul class="features-list">
-          <li>2 physical inspections per month.</li>
-          <li>Mail collection & urgent forwarding (To prevent a vacant house appearance).</li>
-          <li>Post-storm visual check (after major regional weather alerts. Checks are triggered by official weather alerts e.g. Meteo France orange/rouge warning).</li>
-          <li>Utility cycling (flushing toilets/taps to avoid sewer odors; running AC/heating brief test).</li>
-          <li>Visual check of grounds/pool status (detecting leaks, equipment faults, green water).</li>
-          <li>Digital photo status report sent after each visit.</li>
-          <li>Secure keyholding.</li>
-          <li>Perimeter & Security Integrity check. (Inspect gates, fences, doors, windows and shutters for signs of forced entry/ vandalism).</li>
-          <li>Utility meter readings. (water & electricity). Log meter numbers during visits to flag hidden plumbing leaks or unexpected power drains early.</li>
-          <li>Security & Alarm systems visual check. Verify that security keypads, motion detectors and camera indicator lights are active and functioning.</li>
-        </ul>
-        <a href="#contact" class="btn">Select Plan</a>
-      </div>
-
-      <!-- Comfort Home -->
-      <div class="pricing-card featured">
-        <div class="badge">Most Popular</div>
-        <div class="card-header">
-          <h3>Comfort Home</h3>
-          <div class="price">€280 – €390 <span>/ month</span></div>
-          <p class="commitment">(Min. 6-month commitment)</p>
-        </div>
-        <ul class="features-list">
-          <li>4 inspections per month (weekly cadence).</li>
-          <li>All checks from Essential Inspection included.</li>
-          <li>Pre-arrival preparation (turning on hot water, heating/cooling, setting outdoor furniture).</li>
-          <li>Post-departure walkthrough & lockdown.</li>
-          <li>Up to 2 hours of contractor/artisan access coordination per month (non-cumulative).</li>
-          <li>Potted plant care & irrigation checks. (Water indoor & outdoor potted plants and verify that automatic drip system or garden timers are running properly).</li>
-          <li>Outdoor & Patio furniture setup. (Uncover, wipe down, and setup lounge chairs, dining table and sun umbrellas before arrival and store/cover them after departure).</li>
-          <li>Indoor air cycling & Ventilation. (Open windows during weekly visits to cycle fresh air and preventing humidity build up, stale odors and mold).</li>
-          <li>Vehicle maintenance check. (Brief battery check and/or short engine start for car parked long term at place). (Optional add-on).</li>
-          <li>Welcome grocery & fridge stocking. (Buy basic groceries or custom provisions prior to arrival (billed at item cost + a modest service fee).</li>
-          <li>Seasonal opening & Closing.</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Select Plan</a>
-      </div>
-
-      <!-- Premium Rental Management -->
-      <div class="pricing-card">
-        <div class="card-header">
-          <h3>Premium Rental Management</h3>
-          <div class="price">€200 <span>/ mo base</span></div>
-          <p class="commitment">+ €120 – €180 per guest turnaround (or 15–20% commission on rental turnover)</p>
-        </div>
-        <ul class="features-list">
-          <li>Keyholding & unlimited access handling.</li>
-          <li>Pre-stay staging & post-stay inspection.</li>
-          <li>Turnaround management (coordinating/inspecting cleaning and linen teams).</li>
-          <li>24/7 guest helpline for urgent domestic issues during active stays.</li>
-        </ul>
-        <a href="#contact" class="btn">Select Plan</a>
-      </div>
-
-    </div>
-
-    <!-- À la Carte Services -->
-    <div class="alacarte-container">
-      <h3>À la carte Services</h3>
-      <ul class="alacarte-list">
-        <li>Meet-and-greet in-person check-in / check-out.</li>
-        <li>Personal grocery shopping & pantry stocking.</li>
-        <li>Artisan waiting & project monitoring exceeding included hours.</li>
-        <li>Emergency call-outs & after-hours interventions.</li>
-        <li>Standard daytime
+    /* Features List */
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+      flex-grow: 1;
+    }
+    .features-list li {
+      position: relative
