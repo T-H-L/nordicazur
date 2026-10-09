@@ -3,874 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NordicAzur | Property Care & Concierge Services On The French Riviera</title>
+  <title>NordicAzur · Property Care & Concierge</title>
   <style>
     :root {
-      --primary: #0a1120;
-      --primary-light: #162238;
-      --gold: #d4af37;
-      --gold-hover: #b89628;
-      --azure: #38bdf8;
-      --text: #cbd5e1;
-      --text-light: #f8fafc;
-      --bg-light: #f1f5f9;
-      --white: #ffffff;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+      --primary: #1e3a8a;
+      --primary-hover: #1d4ed8;
+      --bg-light: #f8fafc;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Cinzel', 'Segoe UI', system-ui, -apple-system, sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-dark); background-color: #fff; line-height: 1.6; }
 
-    body {
-      color: var(--text);
-      background-color: var(--primary);
-      line-height: 1.6;
-    }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: #fff; border-bottom: 1px solid var(--border); max-width: 1200px; margin: 0 auto; }
+    .logo { font-weight: 700; font-size: 1.25rem; letter-spacing: 1px; color: var(--primary); text-transform: uppercase; }
+    nav a { margin-left: 1.5rem; text-decoration: none; color: var(--text-dark); font-weight: 500; }
+    .lang-select { margin-left: 1.5rem; padding: 0.4rem 0.6rem; border-radius: 4px; border: 1px solid var(--border); background: #fff; }
 
-    /* Header & Navigation */
-    header {
-      background-color: var(--primary);
-      color: var(--text-light);
-      padding: 1.2rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: var(--shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    }
+    .hero { text-align: center; padding: 4rem 1.5rem 3rem; max-width: 900px; margin: 0 auto; }
+    .hero-tag { font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 0.75rem; }
+    .hero h1 { font-size: 2.5rem; line-height: 1.2; font-weight: 800; color: var(--text-dark); margin-bottom: 1.25rem; }
+    .hero p { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 750px; margin-left: auto; margin-right: auto; }
+    .btn-cta { display: inline-block; background-color: var(--primary); color: #fff; font-weight: 600; padding: 0.875rem 1.75rem; border-radius: 6px; text-decoration: none; transition: background 0.2s ease; }
+    .btn-cta:hover { background-color: var(--primary-hover); }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-    }
+    .features { padding: 4rem 1.5rem; background-color: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .features-container { max-width: 1100px; margin: 0 auto; }
+    .features h2 { text-align: center; margin-bottom: 2.5rem; font-size: 1.75rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .card { background: #fff; padding: 1.75rem; border-radius: 8px; border: 1px solid var(--border); }
+    .card-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+    .card p { font-size: 0.95rem; color: var(--text-muted); }
 
-    .logo-svg {
-      height: 50px;
-      width: auto;
-    }
+    .contact { padding: 4rem 1.5rem; max-width: 600px; margin: 0 auto; text-align: center; }
+    .contact h2 { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .contact p { color: var(--text-muted); margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1rem; text-align: left; }
+    .form-group label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; }
+    .form-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.875rem; font-weight: 600; border-radius: 6px; cursor: pointer; }
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
-    }
-
-    nav a:hover {
-      color: var(--gold);
-    }
-
-    /* Language Switcher Dropdown */
-    .lang-switcher select {
-      background-color: var(--primary-light);
-      color: var(--text-light);
-      border: 1px solid var(--gold);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      outline: none;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(rgba(10, 17, 32, 0.85), rgba(10, 17, 32, 0.85)), 
-                  url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: var(--white);
-      padding: 8rem 2rem 6rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: var(--gold);
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 750px;
-      margin: 0 auto 2.5rem;
-      color: var(--text);
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: var(--gold);
-      color: var(--primary);
-      padding: 0.8rem 2.2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: background-color 0.2s, transform 0.2s;
-    }
-
-    .btn:hover {
-      background-color: var(--gold-hover);
-      transform: translateY(-2px);
-    }
-
-    /* Features Section */
-    .features {
-      padding: 5rem 2rem;
-      background-color: var(--primary-light);
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
-      color: var(--gold);
-      letter-spacing: 1px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .card {
-      background: var(--primary);
-      padding: 2.5rem 1.5rem;
-      border-radius: 6px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      box-shadow: var(--shadow);
-      text-align: left;
-    }
-
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      color: var(--gold);
-    }
-
-    /* Services & Pricing Tiers */
-    .pricing {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .price-card {
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 6px;
-      padding: 2.5rem 2rem;
-      background: var(--primary-light);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .price-card.featured {
-      border-color: var(--gold);
-      position: relative;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-    }
-
-    .badge {
-      position: absolute;
-      top: -12px;
-      right: 20px;
-      background: var(--gold);
-      color: var(--primary);
-      padding: 2px 12px;
-      font-size: 0.75rem;
-      border-radius: 4px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .price {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin: 1rem 0;
-    }
-
-    .price span {
-      font-size: 0.9rem;
-      color: var(--text);
-      font-weight: 400;
-    }
-
-    .price-features {
-      list-style: none;
-      margin: 1.5rem 0;
-    }
-
-    .price-features li {
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .price-features li::before {
-      content: "✓";
-      color: var(--gold);
-      font-weight: bold;
-    }
-
-    /* Contact Section */
-    .contact {
-      background-color: var(--primary-light);
-      color: var(--white);
-      padding: 5rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(212, 175, 55, 0.2);
-    }
-
-    .contact p {
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--primary);
-      color: #64748b;
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.85rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .hero h1 {
-        font-size: 2.1rem;
-      }
-    }
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
 <body>
 
-  <!-- Header med NordicAzur Logo -->
-<header style="background-color: #ffffff !important; padding: 12px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center;">
-  <a href="#" class="logo-container" style="background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; display: flex; align-items: center;">
-    <img src="35030.png" alt="NordicAzur Logo" style="height: 100px; width: auto; display: block;">
-  </a>
-
-  <nav style="display: flex; gap: 20px; align-items: center;">
-    <a href="#services" data-i18n="nav_services" style="color: #0f172a !important; font-weight: 600; text-decoration: none;">Services</a>
-    <a href="#pricing" data-i18n="nav_pricing" style="color: #0f172a !important; font-weight: 600; text-decoration: none;">Pricing</a>
-    <a href="#contact" data-i18n="nav_contact" style="color: #0f172a !important; font-weight: 600; text-decoration: none;">Contact</a>
-  </nav>
-      
-      <div class="lang-switcher">
-        <select id="language-select" onchange="changeLanguage(this.value)">
-          <option value="en">🇬🇧 English</option>
-          <option value="da">🇩🇰 Dansk</option>
-          <option value="de">🇩🇪 Deutsch</option>
-          <option value="fi">🇫🇮 Suomi</option>
-          <option value="fr">🇫🇷 Français</option>
-          <option value="it">🇮🇹 Italiano</option>
-          <option value="nl">🇳🇱 Nederlands</option>
-          <option value="no">🇳🇴 Norsk</option>
-          <option value="ru">🇷🇺 Русский</option>
-          <option value="sv">🇸🇪 Svensk</option>
-        </select>
-      </div>
+  <header>
+    <div class="logo">NordicAzur</div>
+    <nav>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="da">Dansk</option>
+        <option value="fr">Français</option>
+        <option value="nl">Nederlands</option>
+        <option value="de">Deutsch</option>
+        <option value="sv">Svenska</option>
+        <option value="no">Norsk</option>
+      </select>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <h1 data-i18n="hero_title">Property Care & Concierge Services</h1>
-    <p data-i18n="hero_subtitle">Complete peace of mind for international property owners in Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup and across the French Riviera.</p>
-    <a href="#contact" class="btn" data-i18n="hero_cta">Request Consultation</a>
+    <div class="hero-tag" data-i18n="hero_tag">Property Care & Concierge</div>
+    <h1 data-i18n="hero_title">Peace of Mind for Your Home on the French Riviera</h1>
+    <p data-i18n="hero_subtitle">Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence. Your home deserves attention, even when you are away. NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.</p>
+    <a href="#contact" class="btn-cta" data-i18n="hero_cta">Book a Free Property Consultation</a>
   </section>
 
-  <!-- Features Section -->
   <section class="features" id="services">
-    <h2 class="section-title" data-i18n="features_title">Why Choose NordicAzur?</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="card-icon">🗣️</div>
-        <h3 data-i18n="feat_1_title">Multilingual Bridge</h3>
-        <p data-i18n="feat_1_desc">Fluent Scandinavian and English communication combined with local French operational expertise. No language barrier with local artisans.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📱</div>
-        <h3 data-i18n="feat_2_title">Digital Visual Reports</h3>
-        <p data-i18n="feat_2_desc">Receive comprehensive photo and video status updates directly to your phone after every inspection visit.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📍</div>
-        <h3 data-i18n="feat_3_title">Hyper-Local Presence</h3>
-        <p data-i18n="feat_3_desc">Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.</p>
+    <div class="features-container">
+      <h2 data-i18n="features_title">What We Offer</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🏡</div>
+          <h3 data-i18n="feat_1_title">Regular property visits</h3>
+          <p data-i18n="feat_1_desc">Routine and thorough check-ups of your home to ensure everything is secure, functional and well-maintained.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📸</div>
+          <h3 data-i18n="feat_2_title">Photo reports after inspections</h3>
+          <p data-i18n="feat_2_desc">Receive clear, visual status updates sent directly to your phone or email after every single visit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <h3 data-i18n="feat_3_title">Coordination of maintenance</h3>
+          <p data-i18n="feat_3_desc">Practical local support and seamless coordination with trusted craftsmen and suppliers by agreement.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤝</div>
+          <h3 data-i18n="feat_4_title">Personal contact & communication</h3>
+          <p data-i18n="feat_4_desc">Direct, transparent, and multi-lingual communication keeping you effortlessly informed all year round.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Tiers -->
-  <section class="pricing" id="pricing">
-    <h2 class="section-title" style="text-align: center;" data-i18n="pricing_title">Tailored Care Packages</h2>
-    <div class="pricing-grid">
-      
-      <!-- Tier 1 -->
-      <div class="price-card">
-        <div>
-          <h3 data-i18n="tier1_title">Essential Inspection</h3>
-          <div class="price">€130 – €180 <span data-i18n="per_month">/ month</span></div>
-          <ul class="price-features">
-            <li data-i18n="tier1_f1">2 physical property checks / month</li>
-            <li data-i18n="tier1_f2">Secure keyholding & mail forwarding</li>
-            <li data-i18n="tier1_f3">Post-storm weather inspection</li>
-            <li data-i18n="tier1_f4">Utility cycling & meter readings</li>
-            <li data-i18n="tier1_f5">Perimeter & Security Integrity check</li>
-            <li data-i18n="tier1_f6">Visual check of ground/pool status</li>
-            <li data-i18n="tier1_f7">Security & Alarm systems visual check</li>
-            <li data-i18n="tier1_f8">Digital photo report after each visit</li>
-          </ul>
-        </div>
-        <a href="#contact" class="btn" style="text-align: center;" data-i18n="select_plan">Select Plan</a>
-      </div>
-
-      <!-- Tier 2 (Featured) -->
-      <div class="price-card featured">
-        <div class="badge" data-i18n="popular_badge">Most Popular</div>
-        <div>
-          <h3 data-i18n="tier2_title">Comfort Home</h3>
-          <div class="price">€280 – €390 <span data-i18n="per_month">/ month</span></div>
-          <ul class="price-features">
-            <li data-i18n="tier2_f1">4 weekly inspections per month</li>
-            <li data-i18n="tier2_f2">All Essential Tier features included</li>
-            <li data-i18n="tier2_f3">Pre-arrival preparation & heating/AC setup</li>
-            <li data-i18n="tier2_f4">Post-departure walkthrough & lockdown</li>
-            <li data-i18n="tier2_f5">Potted plant care & irrigation checks</li>
-            <li data-i18n="tier2_f6">Indoor air cycling & Ventilation</li>
-            <li data-i18n="tier2_f7">Outdoor & Patio furniture setup</li>
-            <li data-i18n="tier2_f8">Welcome grocery & fridge stocking</li>
-            <li data-i18n="tier2_f9">Vehicle maintenance check (optional)</li>
-            <li data-i18n="tier2_f10">Seasonal Opening & Closing</li>
-            <li data-i18n="tier2_f11">2 hrs/mo contractor coordination</li>
-          </ul>
-        </div>
-        <a href="#contact" class="btn" style="text-align: center;" data-i18n="select_plan">Select Plan</a>
-      </div>
-
-      <!-- Tier 3 -->
-      <div class="price-card">
-        <div>
-          <h3 data-i18n="tier3_title">Premium Rental Care</h3>
-          <div class="price">€200 <span data-i18n="per_month_base">/ mo base</span></div>
-          <ul class="price-features">
-            <li data-i18n="tier3_f1">Keyhandling & 24/7 guest helpline</li>
-            <li data-i18n="tier3_f2">Pre-stay staging & post-stay inspection</li>
-            <li data-i18n="tier3_f3">Cleaning & linen team oversight</li>
-            <li data-i18n="tier3_f4">+ €120–€180 per guest turnaround</li>
-          </ul>
-        </div>
-        <a href="#contact" class="btn" style="text-align: center;" data-i18n="select_plan">Select Plan</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact Section -->
   <section class="contact" id="contact">
-    <h2 class="section-title" data-i18n="contact_title">Get in Touch</h2>
-    <p data-i18n="contact_subtitle">Let us handle your property care in Vence and surrounding areas.</p>
-    <p style="font-size: 1.1rem; font-weight: bold; color: var(--gold);">
-  📞 +33 6 72 91 91 59 | 📧 contact@nordicazur.com | 📍 Vence, Côte d'Azur, France
-  <br>
-  
-</p>
+    <h2 data-i18n="contact_title">Book a Free Property Consultation</h2>
+    <p data-i18n="contact_subtitle">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</p>
+    <form onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
+      <div class="form-group">
+        <label data-i18n="form_name">Name</label>
+        <input type="text" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_email">Email</label>
+        <input type="email" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_message">Property details & wishes</label>
+        <textarea rows="4" required></textarea>
+      </div>
+      <button type="submit" class="form-submit" data-i18n="form_button">Send Message</button>
+    </form>
   </section>
 
-  <!-- Footer -->
   <footer>
-    &copy; 2026 NordicAzur. All rights reserved. | Property Care & Concierge Services On The French Riviera | Disclaimer: Translations have been prepared with the assistance of artificial intelligence (AI). While every effort has been made to ensure accuracy, we cannot guarantee that the translations are error-free.
+    <p>&copy; NordicAzur. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript Translation Engine -->
   <script>
     const i18nTranslations = {
-  "en": {
-    "nav_services": "Services",
-    "nav_pricing": "Pricing",
-    "nav_contact": "Contact",
-    "hero_title": "Property Care & Concierge Services",
-    "hero_subtitle": "Complete peace of mind for international property owners in Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-Sur-Mer and across the French Riviera.",
-    "hero_cta": "Request Consultation",
-    "features_title": "Why Choose NordicAzur?",
-    "feat_1_title": "Multilingual Bridge",
-    "feat_1_desc": "Fluent Scandinavian and English communication combined with local French operational expertise. No language barrier with local artisans.",
-    "feat_2_title": "Digital Visual Reports",
-    "feat_2_desc": "Receive comprehensive photo and video status updates directly to your phone after every inspection visit.",
-    "feat_3_title": "Hyper-Local Presence",
-    "feat_3_desc": "Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.",
-    "pricing_title": "Tailored Care Packages",
-    "per_month": "/ month",
-    "per_month_base": "/ mo base",
-    "tier1_title": "Essential Inspection",
-    "tier1_f1": "2 physical inspections per month",
-    "tier1_f2": "Secure keyholding & mail forwarding",
-    "tier1_f3": "Post-storm weather inspection",
-    "tier1_f4": "Utility cycling & meter readings",
-    "tier1_f5": "Digital photo report after each visit",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 physical weekly inspections per month",
-    "tier2_f2": "All Essential Tier features included",
-    "tier2_f3": "Pre-arrival preparation & heating/AC setup",
-    "tier2_f4": "Post-departure walkthrough & lockdown",
-    "tier2_f5": "Potted plant care & irrigation checks",
-    "tier2_f6": "2 hrs/mo contractor coordination",
-    "tier3_title": "Premium Rental Care",
-    "tier3_f1": "Keyhandling & 24/7 guest helpline",
-    "tier3_f2": "Pre-stay staging & post-stay inspection",
-    "tier3_f3": "Cleaning & linen team oversight",
-    "tier3_f4": "+ €120–€180 per guest turnaround",
-    "popular_badge": "Most Popular",
-    "select_plan": "Select Plan",
-    "contact_title": "Get in Touch",
-    "contact_subtitle": "Let us handle your property care on The French Riviera."
-  },
-  "da": {
-    "nav_services": "Tjenester",
-    "nav_pricing": "Priser",
-    "nav_contact": "Kontakt",
-    "hero_title": "Ejendomsvedligeholdelse og concierge-tjenester",
-    "hero_subtitle": "Fuldstændig tryghed for internationale ejendomsejere i Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-sur-Mer og på hele den franske riviera.",
-    "hero_cta": "Anmod om rådgivning",
-    "features_title": "Hvorfor vælge NordicAzur?",
-    "feat_1_title": "Flersproget bro",
-    "feat_1_desc": "Fuldstændig flydende kommunikation på skandinaviske sprog og engelsk kombineret med lokal fransk driftskompetence. Ingen sprogbarriere i forhold til lokale håndværkere.",
-    "feat_2_title": "Digitale visuelle rapporter",
-    "feat_2_desc": "Modtag detaljerede statusopdateringer med fotos og videoer direkte på din telefon efter hvert inspektionsbesøg.",
-    "feat_3_title": "Hyperlokal tilstedeværelse",
-    "feat_3_desc": "Virksomheden har hjemsted i Vence og tilbyder hurtige responstider ved vejrvarsler, udrykninger i nødstilfælde og nøgleopbevaring.",
-    "pricing_title": "Skræddersyede plejepakker",
-    "per_month": "/ måned",
-    "per_month_base": "/ pr. måned",
-    "tier1_title": "Vigtig inspektion",
-    "tier1_f1": "2 fysiske inspektioner om måneden",
-    "tier1_f2": "Sikker opbevaring af nøgler og videresendelse af post",
-    "tier1_f3": "Vejrinspektion efter stormen",
-    "tier1_f4": "Cykling til dagligdagsbrug og aflæsning af målere",
-    "tier1_f5": "Digital fotoreportage efter hvert besøg",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 fysiske ugentlige inspektioner pr. måned",
-    "tier2_f2": "Alle funktioner i Essential-pakken er inkluderet",
-    "tier2_f3": "Forberedelser inden ankomst og opsætning af varme/klimaanlæg",
-    "tier2_f4": "Gennemgang og nedlukning efter afgang",
-    "tier2_f5": "Pleje af potteplanter og kontrol af vandingen",
-    "tier2_f6": "2 timer/måned til koordinering af underleverandører",
-    "tier3_title": "Premium-udlejningsservice",
-    "tier3_f1": "Nøgleadministration og gæstehjælp døgnet rundt",
-    "tier3_f2": "Forberedelse før opholdet og eftersyn efter opholdet",
-    "tier3_f3": "Tilsyn med rengørings- og linnedholdet",
-    "tier3_f4": "+ 120–180 € pr. gæst pr. tur",
-    "popular_badge": "Mest populære",
-    "select_plan": "Vælg abonnement",
-    "contact_title": "Kontakt os",
-    "contact_subtitle": "Lad os tage os af vedligeholdelsen af din ejendom på Den Franske Riviera."
-  },
-  "de": {
-    "nav_services": "Dienstleistungen",
-    "nav_pricing": "Preise",
-    "nav_contact": "Kontakt",
-    "hero_title": "Immobilienpflege und Concierge-Dienstleistungen",
-    "hero_subtitle": "Absolute Sorglosigkeit für internationale Immobilienbesitzer in Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-sur-Mer und an der gesamten französischen Riviera.",
-    "hero_cta": "Beratungstermin vereinbaren",
-    "features_title": "Warum sollten Sie sich für NordicAzur entscheiden?",
-    "feat_1_title": "Mehrsprachige Brücke",
-    "feat_1_desc": "Flüssige Kommunikation auf Skandinavisch und Englisch, kombiniert mit lokaler französischer Fachkompetenz. Keine Sprachbarrieren im Umgang mit lokalen Handwerkern.",
-    "feat_2_title": "Digitale visuelle Berichte",
-    "feat_2_desc": "Erhalten Sie nach jedem Inspektionsbesuch umfassende Status-Updates mit Fotos und Videos direkt auf Ihr Handy.",
-    "feat_3_title": "Hyperlokale Präsenz",
-    "feat_3_desc": "Mit Sitz in Vence bieten wir schnelle Reaktionszeiten bei Wetterwarnungen, Notfalleinsätzen und Schlüsselverwaltungsdiensten.",
-    "pricing_title": "Maßgeschneiderte Pflegepakete",
-    "per_month": "/ Monat",
-    "per_month_base": "/ monatliche Basis",
-    "tier1_title": "Unverzichtbare Inspektion",
-    "tier1_f1": "2 physische Inspektionen pro Monat",
-    "tier1_f2": "Sichere Schlüsselverwahrung und Postweiterleitung",
-    "tier1_f3": "Wetterbegehung nach dem Sturm",
-    "tier1_f4": "Fahrradfahren im Alltag & Zählerablesungen",
-    "tier1_f5": "Digitale Fotodokumentation nach jedem Besuch",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 wöchentliche Sichtprüfungen pro Monat",
-    "tier2_f2": "Alle Funktionen des „Essential“-Pakets sind enthalten",
-    "tier2_f3": "Vorbereitungen vor der Ankunft und Einrichtung der Heizung/Klimaanlage",
-    "tier2_f4": "Begehung nach der Abreise und Abriegelung",
-    "tier2_f5": "Pflege von Topfpflanzen und Überprüfung der Bewässerung",
-    "tier2_f6": "2 Stunden/Monat für die Koordination von Auftragnehmern",
-    "tier3_title": "Premium-Mietwagenbetreuung",
-    "tier3_f1": "Schlüsselverwaltung & 24/7-Gäste-Hotline",
-    "tier3_f2": "Vorbereitung vor dem Aufenthalt und Überprüfung nach dem Aufenthalt",
-    "tier3_f3": "Leitung des Reinigungs- und Wäscheteams",
-    "tier3_f4": "+ 120–180 € pro Gast und Durchlauf",
-    "popular_badge": "Am beliebtesten",
-    "select_plan": "Tarif auswählen",
-    "contact_title": "Kontakt aufnehmen",
-    "contact_subtitle": "Überlassen Sie uns die Betreuung Ihrer Immobilie an der Côte d’Azur."
-  },
-  "fr": {
-    "nav_services": "Services",
-    "nav_pricing": "Tarifs",
-    "nav_contact": "Contact",
-    "hero_title": "Services d'entretien immobilier et de conciergerie",
-    "hero_subtitle": "Une tranquillité d'esprit totale pour les propriétaires étrangers à Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-sur-Mer et sur toute la Côte d'Azur.",
-    "hero_cta": "Demander un rendez-vous de consultation",
-    "features_title": "Pourquoi choisir NordicAzur ?",
-    "feat_1_title": "Pont multilingue",
-    "feat_1_desc": "Une maîtrise parfaite du scandinave et de l'anglais, associée à une expertise opérationnelle locale en France. Aucune barrière linguistique avec les artisans locaux.",
-    "feat_2_title": "Rapports visuels numériques",
-    "feat_2_desc": "Recevez des comptes rendus complets, accompagnés de photos et de vidéos, directement sur votre téléphone après chaque visite d'inspection.",
-    "feat_3_title": "Présence hyperlocale",
-    "feat_3_desc": "Basée à Vence, l'entreprise assure des délais d'intervention rapides pour les alertes météo, les interventions d'urgence et les services de garde de clés.",
-    "pricing_title": "Offres de soins sur mesure",
-    "per_month": "/ mois",
-    "per_month_base": "/ base mensuelle",
-    "tier1_title": "Inspection obligatoire",
-    "tier1_f1": "2 contrôles physiques par mois",
-    "tier1_f2": "Gestion sécurisée des clés et réexpédition du courrier",
-    "tier1_f3": "Inspection météorologique après la tempête",
-    "tier1_f4": "Déplacements à vélo pour les services publics et relevés de compteurs",
-    "tier1_f5": "Compte rendu photo numérique après chaque visite",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 inspections physiques hebdomadaires par mois",
-    "tier2_f2": "Toutes les fonctionnalités de la formule « Essential » sont incluses",
-    "tier2_f3": "Préparatifs avant l'arrivée et mise en service du chauffage et de la climatisation",
-    "tier2_f4": "Vérification après le départ et mise en confinement",
-    "tier2_f5": "Entretien des plantes en pot et vérification de l'arrosage",
-    "tier2_f6": "2 heures par mois consacrées à la coordination des prestataires",
-    "tier3_title": "Service de location haut de gamme",
-    "tier3_f1": "Gestion des clés et service d'assistance téléphonique pour les clients, disponible 24 h/24 et 7 j/7",
-    "tier3_f2": "Préparation avant le séjour et inspection après le séjour",
-    "tier3_f3": "Supervision de l'équipe chargée du nettoyage et du linge",
-    "tier3_f4": "+ 120 à 180 € par invité (prix forfaitaire)",
-    "popular_badge": "Les plus populaires",
-    "select_plan": "Choisir une formule",
-    "contact_title": "Nous contacter",
-    "contact_subtitle": "Confiez-nous la gestion de votre bien immobilier sur la Côte d'Azur."
-  },
-  "no": {
-    "nav_services": "Tjenester",
-    "nav_pricing": "Priser",
-    "nav_contact": "Kontakt",
-    "hero_title": "Eiendomsvedlikehold og concierge-tjenester",
-    "hero_subtitle": "Fullstendig trygghet for internasjonale eiendomseiere i Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-sur-Mer og langs hele den franske rivieraen.",
-    "hero_cta": "Be om rådgivning",
-    "features_title": "Hvorfor velge NordicAzur?",
-    "feat_1_title": "Flerspråklig bro",
-    "feat_1_desc": "Flytende kommunikasjon på skandinaviske språk og engelsk, kombinert med lokal fransk driftskompetanse. Ingen språkbarrierer i samarbeidet med lokale håndverkere.",
-    "feat_2_title": "Digitale visuelle rapporter",
-    "feat_2_desc": "Få omfattende statusoppdateringer med bilder og videoer sendt direkte til telefonen din etter hvert inspeksjonsbesøk.",
-    "feat_3_title": "Hyperlokal tilstedeværelse",
-    "feat_3_desc": "Med base i Vence tilbyr vi raske responstider ved værvarsler, utrykning i nødstilfeller og nøkkeloppbevaringstjenester.",
-    "pricing_title": "Skreddersydde omsorgspakker",
-    "per_month": "/ måned",
-    "per_month_base": "/ månedlig basis",
-    "tier1_title": "Nødvendig inspeksjon",
-    "tier1_f1": "2 fysiske inspeksjoner per måned",
-    "tier1_f2": "Sikker nøkkeloppbevaring og videresending av post",
-    "tier1_f3": "Værinspeksjon etter stormen",
-    "tier1_f4": "Sykling i hverdagen og måleravlesning",
-    "tier1_f5": "Digital fotoreportasje etter hvert besøk",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 fysiske ukentlige inspeksjoner per måned",
-    "tier2_f2": "Alle funksjoner i Essential-nivået er inkludert",
-    "tier2_f3": "Forberedelser før ankomst og innstilling av oppvarming/klimaanlegg",
-    "tier2_f4": "Gjennomgang og nedstengning etter avreise",
-    "tier2_f5": "Pleie av potteplanter og kontroll av vanning",
-    "tier2_f6": "2 timer/måned med koordinering av underleverandører",
-    "tier3_title": "Premium utleiepleie",
-    "tier3_f1": "Nøkkelhåndtering og døgnåpen hjelpetelefon for gjester",
-    "tier3_f2": "Forberedelse før oppholdet og inspeksjon etter oppholdet",
-    "tier3_f3": "Tilsyn med rengjørings- og sengetøyteamet",
-    "tier3_f4": "+ 120–180 euro per gjest per omløp",
-    "popular_badge": "Mest populære",
-    "select_plan": "Velg abonnement",
-    "contact_title": "Ta kontakt",
-    "contact_subtitle": "La oss ta oss av vedlikeholdet av eiendommen din på den franske rivieraen."
-  },
-  "sv": {
-    "nav_services": "Tjänster",
-    "nav_pricing": "Priser",
-    "nav_contact": "Kontakt",
-    "hero_title": "Fastighetsskötsel och conciergetjänster",
-    "hero_subtitle": "Fullständig trygghet för internationella fastighetsägare i Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-sur-Mer och längs hela Franska Rivieran.",
-    "hero_cta": "Begär rådgivning",
-    "features_title": "Varför välja NordicAzur?",
-    "feat_1_title": "Flerspråkig bro",
-    "feat_1_desc": "Flytande kommunikation på skandinaviska och engelska i kombination med lokal fransk verksamhetskompetens. Inga språkbarriärer i kontakten med lokala hantverkare.",
-    "feat_2_title": "Digitala visuella rapporter",
-    "feat_2_desc": "Få utförliga statusuppdateringar med bilder och videoklipp direkt till din telefon efter varje inspektionsbesök.",
-    "feat_3_title": "Hyperlokal närvaro",
-    "feat_3_desc": "Företaget är baserat i Vence och erbjuder snabba insatstider vid vädervarningar, akuta utryckningar och nyckelhanteringstjänster.",
-    "pricing_title": "Skräddarsydda vårdpaket",
-    "per_month": "/ månad",
-    "per_month_base": "/ månadsbasis",
-    "tier1_title": "Viktig inspektion",
-    "tier1_f1": "2 fysiska inspektioner per månad",
-    "tier1_f2": "Säker nyckelförvaring och vidarebefordran av post",
-    "tier1_f3": "Väderinspektion efter stormen",
-    "tier1_f4": "Cykling i tjänsten och mätaravläsningar",
-    "tier1_f5": "Digital fotorapport efter varje besök",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 fysiska veckokontroller per månad",
-    "tier2_f2": "Alla funktioner i Essential-nivån ingår",
-    "tier2_f3": "Förberedelser inför ankomsten och inställning av värme/luftkonditionering",
-    "tier2_f4": "Genomgång och nedstängning efter avresa",
-    "tier2_f5": "Skötsel av krukväxter och kontroll av bevattningen",
-    "tier2_f6": "2 timmar/månad för samordning av underleverantörer",
-    "tier3_title": "Premium-uthyrningsservice",
-    "tier3_f1": "Nyckelhantering och hjälplinje för gäster dygnet runt",
-    "tier3_f2": "Förberedelser inför vistelsen och besiktning efter vistelsen",
-    "tier3_f3": "Ledning av städ- och linnepersonalen",
-    "tier3_f4": "+ 120–180 euro per gäst och omlopp",
-    "popular_badge": "Mest populära",
-    "select_plan": "Välj abonnemang",
-    "contact_title": "Kontakta oss",
-    "contact_subtitle": "Låt oss ta hand om skötseln av din fastighet på Franska Rivieran."
-  },
-  "fi": {
-    "nav_services": "Palvelut",
-    "nav_pricing": "Hinnasto",
-    "nav_contact": "Ota yhteyttä",
-    "hero_title": "Kiinteistönhoito & Concierge Services",
-    "hero_subtitle": "Täydellinen mielenrauha kansainvälisille huvilanomistajille Vencessä ja Ranskan Rivieralla.",
-    "hero_cta": "Pyydä konsultaatio",
-    "features_title": "Miksi valita NordicAzur?",
-    "feat_1_title": "Monikielinen silta",
-    "feat_1_desc": "Sujuva skandinaavinen ja englanninkielinen viestintä yhdistettynä paikalliseen ranskalaiseen osaamiseen.",
-    "feat_2_title": "Digitaaliset radioraportit",
-    "feat_2_desc": "Vastaanota kattavat kuva- ja videopäivitykset suoraan puhelimeesi jokaisen tarkastuskäynnin jälkeen.",
-    "feat_3_title": "Paikallinen läsnäolo",
-    "feat_3_desc": "Toimipaikka Vencessä, nopea reagointi säävaroituksiin, hätätilanteisiin ja avainpalveluihin.",
-    "pricing_title": "Räätälöidyt paketit",
-    "per_month": "/ kuukausi",
-    "per_month_base": "/ kk perus",
-    "tier1_title": "Essential Tarkastus",
-    "tier1_f1": "2 kiinteistöntarkastusta / kuukausi",
-    "tier1_f2": "Turvallinen avainpalvelu ja postin edelleenlähetys",
-    "tier1_f3": "Sään tarkastus myrskyn jälkeen",
-    "tier1_f4": "Laitteiston tarkistus ja mittarien lukemat",
-    "tier1_f5": "Digitaalinen kuvaraportti jokaisen käynnin jälkeen",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 viikoittaista tarkastusta kuukaudessa",
-    "tier2_f2": "Kaikki Essential-tason ominaisuudet sisältyvät",
-    "tier2_f3": "Valmistelu ennen saapumista ja lämmitys/ilmastointi",
-    "tier2_f4": "Tarkastus ja lukitus lähtöjen jälkeen",
-    "tier2_f5": "Ruukkukasvien hoito ja kastelujärjestelmän tarkistus",
-    "tier2_f6": "2 t/kk urakoitsijoiden koordinointia",
-    "tier3_title": "Premium Vuokrauspalvelu",
-    "tier3_f1": "Avainpalvelu ja 24/7 vierastuki",
-    "tier3_f2": "Valmistelu ennen viipymistä ja tarkastus sen jälkeen",
-    "tier3_f3": "Siivous- ja liinavaatetiimin valvonta",
-    "tier3_f4": "+ €120–€180 per vieraijen vaihtuvuus",
-    "popular_badge": "Suosituin",
-    "select_plan": "Valitse paketti",
-    "contact_title": "Ota yhteyttä",
-    "contact_subtitle": "Anna meidän huolehtia kiinteistöstäsi Vencessä ja lähialueilla."
-  },
-  "it": {
-    "nav_services": "Servizi",
-    "nav_pricing": "Prezzi",
-    "nav_contact": "Contatti",
-    "hero_title": "Gestione Proprietà & Concierge Services",
-    "hero_subtitle": "Tranquillità assoluta per i proprietari internazionali di ville a Vence e sulla Costa Azzurra.",
-    "hero_cta": "Richiedi una consulenza",
-    "features_title": "Perché scegliere NordicAzur?",
-    "feat_1_title": "Ponte Multilingue",
-    "feat_1_desc": "Comunicazione fluida in scandinavo e inglese unita all'esperienza operativa locale in francese.",
-    "feat_2_title": "Report Visivi Digitali",
-    "feat_2_desc": "Ricevi aggiornamenti fotografici e video dettagliati direttamente sul tuo telefono dopo ogni visita.",
-    "feat_3_title": "Presenza Iper-Locale",
-    "feat_3_desc": "Con sede a Vence, garantiamo tempi di risposta rapidi per allerte meteo, emergenze e custodia chiavi.",
-    "pricing_title": "Pacchetti Su Misura",
-    "per_month": "/ mese",
-    "per_month_base": "/ mese base",
-    "tier1_title": "Ispezione Essenziale",
-    "tier1_f1": "2 controlli fisici della proprietà / mese",
-    "tier1_f2": "Custodia chiavi sicura e inoltro posta",
-    "tier1_f3": "Ispezione meteo post-tempesta",
-    "tier1_f4": "Controllo utenze e lettura contatori",
-    "tier1_f5": "Report fotografico digitale dopo ogni visita",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 ispezioni settimanali al mese",
-    "tier2_f2": "Tutti i servizi del pacchetto Essenziale inclusi",
-    "tier2_f3": "Preparazione prima dell'arrivo e impostazione clima",
-    "tier2_f4": "Controllo post-partenza e chiusura",
-    "tier2_f5": "Cura delle piante in vaso e controllo irrigazione",
-    "tier2_f6": "2 ore/mese di coordinamento artigiani",
-    "tier3_title": "Gestione Affitti Premium",
-    "tier3_f1": "Consegna chiavi e assistenza ospiti 24/7",
-    "tier3_f2": "Allestimento pre-soggiorno e ispezione post-soggiorno",
-    "tier3_f3": "Supervisione del team di pulizia e biancheria",
-    "tier3_f4": "+ €120–€180 per cambio ospite",
-    "popular_badge": "Più Popolare",
-    "select_plan": "Seleziona",
-    "contact_title": "Contattaci",
-    "contact_subtitle": "Lascia che ci occupiamo della tua proprietà a Vence e dintorni."
-  },
-  "nl": {
-    "nav_services": "Diensten",
-    "nav_pricing": "Prijzen",
-    "nav_contact": "Contact",
-    "hero_title": "Vastgoedonderhoud en conciërgediensten",
-    "hero_subtitle": "Volledige gemoedsrust voor internationale vastgoedeigenaren in Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-sur-Mer en langs de hele Franse Rivièra.",
-    "hero_cta": "Advies aanvragen",
-    "features_title": "Waarom kiezen voor NordicAzur?",
-    "feat_1_title": "Meertalige brug",
-    "feat_1_desc": "Vloeiende communicatie in het Scandinavisch en Engels, gecombineerd met lokale Franse operationele expertise. Geen taalbarrière met lokale ambachtslieden.",
-    "feat_2_title": "Digitale visuele rapporten",
-    "feat_2_desc": "Ontvang na elk inspectiebezoek uitgebreide statusupdates met foto’s en video’s rechtstreeks op je telefoon.",
-    "feat_3_title": "Hyperlokale aanwezigheid",
-    "feat_3_desc": "Gevestigd in Vence, met snelle responstijden voor weerswaarschuwingen, noodoproepen en sleutelbeheer.",
-    "pricing_title": "Zorgpakketten op maat",
-    "per_month": "/ maand",
-    "per_month_base": "/ per maand",
-    "tier1_title": "Verplichte inspectie",
-    "tier1_f1": "2 fysieke inspecties per maand",
-    "tier1_f2": "Veilige sleutelbeheer- en postdoorstuurservice",
-    "tier1_f3": "Weerinspectie na de storm",
-    "tier1_f4": "Fietsen voor dagelijkse boodschappen & meterstanden opnemen",
-    "tier1_f5": "Digitaal fotoverslag na elk bezoek",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 fysieke wekelijkse inspecties per maand",
-    "tier2_f2": "Alle functies van het Essential-pakket zijn inbegrepen",
-    "tier2_f3": "Voorbereidingen vóór aankomst en instelling van verwarming/airco",
-    "tier2_f4": "Rondleiding na vertrek en afsluiting",
-    "tier2_f5": "Verzorging van potplanten en controle van de watergift",
-    "tier2_f6": "2 uur per maand coördinatie met aannemers",
-    "tier3_title": "Premium Verhuurzorg",
-    "tier3_f1": "Sleutelbeheer & 24/7 hulplijn voor gasten",
-    "tier3_f2": "Voorbereiding vóór het verblijf en inspectie na het verblijf",
-    "tier3_f3": "Toezicht op het schoonmaak- en linnenteam",
-    "tier3_f4": "+ € 120–€ 180 per gast (voor een volledige omzet)",
-    "popular_badge": "Meest populair",
-    "select_plan": "Kies een abonnement",
-    "contact_title": "Neem contact op",
-    "contact_subtitle": "Laat ons het beheer van uw onroerend goed aan de Franse Rivièra voor onze rekening nemen."
-  },
-  "ru": {
-    "nav_services": "Услуги",
-    "nav_pricing": "Цены",
-    "nav_contact": "Контакты",
-    "hero_title": "Управление недвижимостью & Concierge Services",
-    "hero_subtitle": "Полное спокойствие для владельцев вилл в Вансе, Сен-Поль-де-Вансе и на Лазурном Берегу.",
-    "hero_cta": "Запросить консультацию",
-    "features_title": "Почему NordicAzur?",
-    "feat_1_title": "Многоязычный мост",
-    "feat_1_desc": "Свободное общение на скандинавских языках и английском в сочетании с местным французским опытом.",
-    "feat_2_title": "Цифровые фотоотчеты",
-    "feat_2_desc": "Получайте подробные фото- и видеоотчеты прямо на свой телефон после каждого инспекционного визита.",
-    "feat_3_title": "Локальное присутствие",
-    "feat_3_desc": "Находимся в Вансе, обеспечиваем быстрое реагирование при штормах, авариях и хранении ключей.",
-    "pricing_title": "Тарифные пакеты",
-    "per_month": "/ месяц",
-    "per_month_base": "/ мес баз",
-    "tier1_title": "Базовый осмотр",
-    "tier1_f1": "2 проверки объекта в месяц",
-    "tier1_f2": "Безопасное хранение ключей и пересылка почты",
-    "tier1_f3": "Осмотр территории после непогоды",
-    "tier1_f4": "Проверка коммуникаций и снятие показаний счетчиков",
-    "tier1_f5": "Цифровой фотоотчет после каждого визита",
-    "tier2_title": "Comfort Home",
-    "tier2_f1": "4 еженедельные проверки в месяц",
-    "tier2_f2": "Включает все услуги Базового тарифа",
-    "tier2_f3": "Подготовка к приезду и настройка климат-контроля",
-    "tier2_f4": "Проверка и закрытие объекта после отъезда",
-    "tier2_f5": "Уход за горшечными растениями и проверка автополива",
-    "tier2_f6": "2 часа в месяц координации подрядчиков",
-    "tier3_title": "Премиум аренда",
-    "tier3_f1": "Передача ключей и поддержка гостей 24/7",
-    "tier3_f2": "Подготовка перед заселением и осмотр после выезда",
-    "tier3_f3": "Контроль работы клининга и смены белья",
-    "tier3_f4": "+ €120–€180 за каждую смену гостей",
-    "popular_badge": "Самый популярный",
-    "select_plan": "Выбрать",
-    "contact_title": "Связаться с нами",
-    "contact_subtitle": "Позвольте нам позаботиться о вашей недвижимости в Вансе и окрестностях."
-  }
-};
+      "en": {
+        "nav_services": "Services",
+        "nav_contact": "Contact",
+        "hero_tag": "NordicAzur · Property Care & Concierge",
+        "hero_title": "Peace of Mind for Your Home on the French Riviera",
+        "hero_subtitle": "Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence. Your home deserves attention, even when you are away. NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.",
+        "hero_cta": "Book a Free Property Consultation",
+        "features_title": "What We Offer",
+        "feat_1_title": "Regular property visits",
+        "feat_1_desc": "Routine and thorough check-ups of your home to ensure everything is secure, functional and well-maintained.",
+        "feat_2_title": "Photo reports after inspections",
+        "feat_2_desc": "Receive clear, visual status updates sent directly to your phone or email after every single visit.",
+        "feat_3_title": "Coordination of maintenance",
+        "feat_3_desc": "Practical local support and seamless coordination with trusted craftsmen and suppliers by agreement.",
+        "feat_4_title": "Personal contact & communication",
+        "feat_4_desc": "Direct, transparent, and multi-lingual communication keeping you effortlessly informed all year round.",
+        "contact_title": "Book a Free Property Consultation",
+        "contact_subtitle": "Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.",
+        "form_name": "Name",
+        "form_email": "Email",
+        "form_message": "Property details & wishes",
+        "form_button": "Send Message"
+      }
+    };
 
-    const supportedLanguages = ['en', 'da', 'de', 'fi', 'fr', 'it', 'nl', 'no', 'ru', 'sv'];
-
-    function detectUserLanguage() {
-      const browserLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2).toLowerCase();
-      return supportedLanguages.includes(browserLang) ? browserLang : 'en';
+    function setLanguage(lang) {
+      const dict = i18nTranslations[lang] || i18nTranslations['en'];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+      document.getElementById('langSelect').value = lang;
     }
 
     function changeLanguage(lang) {
-      if (!supportedLanguages.includes(lang)) lang = 'en';
-      
-      document.documentElement.lang = lang;
-      
-      const select = document.getElementById('language-select');
-      if (select) select.value = lang;
-
-      const elements = document.querySelectorAll('[data-i18n]');
-      
-      elements.forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        const translation = (i18nTranslations[lang] && i18nTranslations[lang][key])
-                          ? i18nTranslations[lang][key]
-                          : i18nTranslations['en'][key];
-        
-        if (translation) {
-          // Hvis elementet har børnebørn (fx span i en price-div), ændres kun tekst-noden
-          if (element.children.length > 0) {
-            let updated = false;
-            element.childNodes.forEach(node => {
-              if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
-                node.textContent = translation;
-                updated = true;
-              }
-            });
-            if (!updated) element.textContent = translation;
-          } else {
-            element.textContent = translation;
-          }
-        }
-      });
+      localStorage.setItem('nordicazur_lang', lang);
+      setLanguage(lang);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      const initialLang = detectUserLanguage();
-      changeLanguage(initialLang);
+      const savedLang = localStorage.getItem('nordicazur_lang') || 'en';
+      setLanguage(savedLang);
     });
   </script>
 </body>
