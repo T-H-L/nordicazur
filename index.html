@@ -12,7 +12,6 @@
       --text-dark: #0f172a;
       --text-muted: #475569;
       --border: #e2e8f0;
-      --accent: #b76e79;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -70,4 +69,101 @@
 
     /* Pricing Section */
     .pricing { padding: 5rem 1.5rem; max-width: 1150px; margin: 0 auto; }
-    .pricing h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom:
+    .pricing h2 { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .pricing-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.05rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: stretch; }
+    
+    .price-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 2.25rem 1.75rem; display: flex; flex-direction: column; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+    .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+    .price-card.popular { border: 2px solid var(--primary); }
+    .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 20px; letter-spacing: 1px; }
+    
+    .price-card h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-dark); }
+    .price-features { list-style: none; margin-bottom: 2rem; flex-grow: 1; }
+    .price-features li { padding: 0.6rem 0; border-bottom: 1px solid #f1f5f9; color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .price-features li::before { content: "✓"; color: var(--primary); font-weight: bold; }
+    
+    .price-btn { text-align: center; background: var(--bg-light); color: var(--primary); border: 1px solid var(--border); padding: 0.75rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
+    .price-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Contact Section */
+    .contact { padding: 5rem 1.5rem; background-color: var(--bg-light); border-top: 1px solid var(--border); }
+    .contact-container { max-width: 650px; margin: 0 auto; text-align: center; }
+    .contact h2 { font-size: 1.85rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .contact p { color: var(--text-muted); margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1.25rem; text-align: left; }
+    .form-group label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.95rem; }
+    .form-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.9rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+    .form-submit:hover { background: var(--primary-hover); }
+
+    footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo-container">
+      <img src="logo.png" alt="NordicAzur Logo" class="logo-img" onerror="this.style.display='none';">
+      <span class="logo-text">NordicAzur</span>
+    </a>
+    <nav>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#pricing" data-i18n="nav_pricing">Packages</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="da">Dansk</option>
+        <option value="fr">Français</option>
+        <option value="nl">Nederlands</option>
+        <option value="de">Deutsch</option>
+        <option value="sv">Svenska</option>
+        <option value="no">Norsk</option>
+      </select>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag" data-i18n="hero_tag">NORDICAZUR · PROPERTY CARE & CONCIERGE</div>
+        <h1 data-i18n="hero_title">Peace of Mind for Your Home on the French Riviera</h1>
+        <div class="hero-lead" data-i18n="hero_lead">Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.</div>
+        <div class="hero-sublead" data-i18n="hero_sublead">Your home deserves attention, even when you are away.</div>
+        <p data-i18n="hero_desc">NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.</p>
+        
+        <ul class="hero-checklist">
+          <li data-i18n="hero_check_1">Regular property visits</li>
+          <li data-i18n="hero_check_2">Photo reports after inspections</li>
+          <li data-i18n="hero_check_3">Coordination of maintenance by agreement</li>
+          <li data-i18n="hero_check_4">Personal contact and clear communication</li>
+        </ul>
+
+        <a href="#contact" class="btn-cta" data-i18n="hero_cta">Book a Free Property Consultation</a>
+        <div class="cta-note" data-i18n="cta_note">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</div>
+      </div>
+      
+      <div class="hero-image-container">
+        <img src="hero.jpg" alt="Villa in French Riviera" class="hero-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <h2 data-i18n="about_title">About NordicAzur – Peace of mind and quality in property care</h2>
+      <p class="about-intro" data-i18n="about_intro">Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane who has lived in Vence and on the French Riviera with his family for many years.</p>
+      <p class="about-lead" data-i18n="about_lead">With a background of more than 15 years of experience in the professional business sector within consulting and project management, NordicAzur is built on core values such as reliability, clear communication, and uncompromising quality.</p>
+      
+      <h3 class="about-subtitle" data-i18n="about_why_title">Why choose NordicAzur?</h3>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <h3 data-i18n="about_card1_title">Scandinavian structure & punctuality</h3>
+          <p data-i18n="about_card1_desc">You can rely on agreements being kept to the letter and your home being looked after to the highest standard.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card2_title">Local presence & network</h3>
+          <p data-i18n="about_card2_desc">With many years of permanent residence in the area, I have in-depth knowledge of local conditions, challenges, and selected suppliers.</p>
