@@ -57,35 +57,87 @@
       cursor: pointer;
     }
 
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 4.5rem 2rem;
-      background-color: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
+    /* Hero Section (Split Layout: Text Left, Image Right) */
+    .hero-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .hero h1 {
-      font-size: 2.5rem;
+    .hero-text {
+      text-align: left;
+    }
+    .sub-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #ca8a04;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .hero-text h1 {
+      font-size: 2.6rem;
+      line-height: 1.2;
       margin-bottom: 1rem;
       color: #0f172a;
     }
-    .hero p {
-      font-size: 1.2rem;
+    .hero-lead {
+      font-size: 1.15rem;
       color: #475569;
-      max-width: 700px;
-      margin: 0 auto 2rem auto;
+      margin-bottom: 1.2rem;
+    }
+    .hero-p {
+      color: #334155;
+      margin-bottom: 1.5rem;
+    }
+    .hero-bullets {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+    .hero-bullets li {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 0.75rem;
+      color: #1e293b;
+      font-weight: 500;
+    }
+    .hero-bullets li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #ca8a04;
+      font-weight: bold;
     }
     .btn-hero {
       display: inline-block;
-      background-color: #eab308;
-      color: #0f172a;
+      background-color: #14382c; /* Mørkegrøn knap som på screenshot */
+      color: #ffffff;
       font-weight: bold;
-      padding: 0.8rem 1.8rem;
+      padding: 1rem 2rem;
       border-radius: 8px;
+      font-size: 1rem;
+      text-align: center;
+      transition: background-color 0.2s ease;
     }
     .btn-hero:hover {
-      background-color: #ca8a04;
+      background-color: #0d261e;
       text-decoration: none;
+    }
+    .hero-subtext {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 0.8rem;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
     }
 
     /* Sections Shared */
@@ -372,53 +424,6 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
-    <h1>Property Care & Concierge Services</h1>
-    <p>Complete peace of mind for international property owners in Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup and across the French Riviera.</p>
-    <a href="#contact" class="btn-hero">Request Consultation</a>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services">
-    <h2>Why Choose NordicAzur?</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon">🗣️</div>
-        <h3>Multilingual Bridge</h3>
-        <p>Fluent Scandinavian and English communication combined with local French operational expertise. No language barrier with local artisans.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📱</div>
-        <h3>Digital Visual Reports</h3>
-        <p>Receive comprehensive photo and video status updates directly to your phone after every inspection visit.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📍</div>
-        <h3>Hyper-Local Presence</h3>
-        <p>Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about-section">
-    <h2>About NordicAzur – Peace of Mind & Quality Care</h2>
-    <div class="about-content">
-      <p>
-        Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane living permanently in Vence on the French Riviera with his French Wife and two children. 
-      </p>
-      <p>
-        With a background of more than 15 years in corporate international sales, advisory, and project management, NordicAzur is built on core values of reliability, transparent communication, and uncompromising quality.
-      </p>
-<p>NordicAzur was founded to give international property owners complete peace of mind when managing secondary homes on the French Riviera. Managing a property from afar can often bring communication hurdles, language barriers, and uncertainties regarding local maintenance. NordicAzur acts as your trusted, boots-on-the-ground partner.</p> 
-<p>Combining Scandinavian precision and transparent digital reporting with local French operational experience, we ensure your property is protected, impeccably maintained, and ready for every stay.
-
-Hyper-Local Focus: Dedicated service for Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Cagnes-Sur-Mer, Saint-Jeannet and surrounding areas.</p>
-
-
-
-      <ul class="about-highlights">
-        <li><strong>Scandinavian Structure & Punctuality:</strong> You can count on agreements being kept to the letter and your home being cared for to the highest standards.</li>
-        <li><strong>Local Presence & Network:</strong> Having lived in the area for many years, I possess deep knowledge of local conditions, property maintenance needs, and vetted local artisans.</li>
-        <li><strong>Direct & Transparent Communication:</strong> You get a single, dedicated point of contact. Receive regular visual reports in your preferred language (Danish, English, or French) for complete peace of mind – wherever you are in the world.</li>
-        <li><strong>Personal Commitment:</strong> Your home is never just another number on a list. NordicAzur is driven by a passion for delivering tailored, personal service that cares for both the big picture
+  <div class="hero-container">
+    <div class="hero-text">
+      <div class="sub-tag">NORDICAZUR · PROPERTY CARE &
