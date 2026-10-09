@@ -9,6 +9,9 @@ if (!DEEPL_API_KEY) {
   process.exit(1);
 }
 
+// Hjælpefunktion til pause mellem kald så API'et ikke overbelastes
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 function translateText(text, targetLang) {
   return new Promise((resolve, reject) => {
     const data = new URLSearchParams({
@@ -38,10 +41,10 @@ function translateText(text, targetLang) {
           if (parsed.translations && parsed.translations[0]) {
             resolve(parsed.translations[0].text);
           } else {
-            reject(`Fejl fra DeepL API: ${body}`);
+            reject(`Fejl fra DeepL API (${res.statusCode}): ${body}`);
           }
         } catch (e) {
-          reject(`Kunne ikke parse DeepL svar: ${body}`);
+          reject(`Kunne ikke parse DeepL svar (${res.statusCode}): ${body}`);
         }
       });
     });
@@ -91,10 +94,14 @@ async function run() {
 
     for (const [key, enValue] of Object.entries(enKeys)) {
       try {
+        // DeepL forventer 'NB' for Norsk Bokmål
         const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
         const translatedText = await translateText(enValue, deeplLang);
         translations[lang][key] = translatedText;
         console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
+        
+        // Vent 150 ms før næste kald så vi ikke rammer rate limit
+        await sleep(150);
       } catch (err) {
         console.error(`Fejl ved oversættelse af ${key} til ${lang}:`, err);
       }
