@@ -417,4 +417,131 @@
       color: #0f172a;
     }
     .contact-info p {
-      margin: 1
+      margin: 1.2rem 0;
+      font-size: 1.05rem;
+      color: #0f172a;
+    }
+    .contact-info a {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      background: #ffffff;
+      padding: 2.2rem;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .form-group input, .form-group textarea {
+      padding: 0.85rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #0f172a;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .btn-submit {
+      background-color: #14382c;
+      color: #ffffff;
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 48px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-submit:hover {
+      background-color: #0d261e;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background-color: #0b1329;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+    footer .disclaimer {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #64748b;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+
+    /* Responsive Mobile Queries */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .hero-container {
+        padding: 2.5rem 1.5rem;
+        gap: 2rem;
+      }
+      .btn-hero {
+        width: 100%;
+        text-align: center;
+      }
+      section {
+        padding: 3rem 1.5rem;
+      }
+      .about-section {
+        padding: 2.5rem 1.5rem;
+      }
+      .alacarte-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <a href="#">
+        <img src="35030.png" alt="NordicAzur Logo">
+      </a>
+      <span class="logo-text">NordicAzur</span>
+    </div>
+
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Packages</a>
+      <a href="#contact">Contact</a>
+      <select id="lang-select">
+        <option value="en">GB English</option>
+        <option value="da">DK Dansk</option>
+        <option value="de">DE Deutsch</option>
+        <option value="fi">FI Suomi</option>
+        <option value="fr">FR Français</option>
+        <option value="it">IT Italiano</option>
+        <option value="nl">NL Nederlands</option>
+        <option value="no">NO Norsk</option>
+        <option value="ru">RU Русский</option>
+        <option value="sv">SE Svensk</option>
+      </select>
+    </nav>
