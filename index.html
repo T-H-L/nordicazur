@@ -3,321 +3,400 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NordicAzur - Property Care & Concierge Services</title>
+  <title>NordicAzur · Property Care & Concierge</title>
   <style>
+    :root {
+      --primary: #1b4332;
+      --primary-hover: #2d6a4f;
+      --bg-light: #f8fafc;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --accent: #b76e79;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; min-height: 100vh; background-color: #ffffff !important; color: #0f172a !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; -webkit-text-size-adjust: 100%; }
-    a { color: #ca8a04; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background-color: #0b1329; color: #ffffff; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 1rem; }
-    .logo-container { display: flex; align-items: center; gap: 0.8rem; }
-    header img { height: 38px; }
-    .logo-text { font-weight: 700; font-size: 1.3rem; color: #ffffff; letter-spacing: -0.3px; }
-    nav { display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; }
-    nav a { color: #ffffff; font-weight: 600; font-size: 0.95rem; padding: 0.2rem 0; }
-    nav a:hover { color: #eab308; text-decoration: none; }
-    select { background-color: #151f38; color: #ffffff; border: 1px solid #2a3756; padding: 0.45rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.88rem; font-weight: 500; }
-    main { display: block; width: 100%; background-color: #ffffff; }
-    .hero-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center; padding: 4rem 3rem; max-width: 1250px; margin: 0 auto; background-color: #ffffff; }
-    .sub-tag { font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; color: #ca8a04; text-transform: uppercase; margin-bottom: 0.6rem; }
-    .hero-text h1 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1.2rem; color: #0f172a !important; font-weight: 700; }
-    .hero-lead { font-size: 1.15rem; color: #334155 !important; margin-bottom: 1.2rem; font-weight: 500; line-height: 1.5; }
-    .hero-p { color: #475569 !important; margin-bottom: 1.5rem; font-size: 0.98rem; }
-    .hero-bullets { list-style: none; padding: 0; margin-bottom: 2.2rem; }
-    .hero-bullets li { position: relative; padding-left: 1.8rem; margin-bottom: 0.8rem; color: #0f172a !important; font-weight: 600; font-size: 0.98rem; }
-    .hero-bullets li::before { content: "✓"; position: absolute; left: 0; color: #ca8a04; font-weight: bold; }
-    .btn-hero { display: inline-block; background-color: #14382c; color: #ffffff !important; font-weight: 700; padding: 1rem 2.2rem; border-radius: 8px; font-size: 1.05rem; transition: background-color 0.2s ease; }
-    .btn-hero:hover { background-color: #0d261e; color: #ffffff !important; text-decoration: none; }
-    .hero-subtext { font-size: 0.85rem; color: #64748b !important; margin-top: 0.8rem; }
-    .hero-image img { width: 100%; max-height: 450px; border-radius: 16px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); object-fit: cover; background-color: #e2e8f0; }
-    section { padding: 4rem 2rem; max-width: 1250px; margin: 0 auto; }
-    section h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 1rem; color: #0f172a !important; font-weight: 700; }
-    .section-intro { text-align: center; color: #64748b !important; max-width: 800px; margin: 0 auto 3rem auto; font-size: 1.02rem; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 2rem; }
-    .feature-card { background-color: #f8fafc; padding: 2.2rem 1.8rem; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center; }
-    .feature-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .feature-card h3 { margin-bottom: 0.6rem; color: #0f172a !important; font-size: 1.2rem; }
-    .feature-card p { color: #475569 !important; font-size: 0.95rem; line-height: 1.5; }
-    .about-section { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 3.5rem 2.5rem; margin: 2rem auto; }
-    .about-content { max-width: 900px; margin: 0 auto; font-size: 1.02rem; color: #334155 !important; }
-    .about-content p { margin-bottom: 1.2rem; line-height: 1.7; }
-    .about-highlights { list-style: none; padding: 0; margin-top: 1.8rem; }
-    .about-highlights li { position: relative; padding-left: 2rem; margin-bottom: 1.1rem; color: #0f172a !important; line-height: 1.6; }
-    .about-highlights li::before { content: "✓"; position: absolute; left: 0; color: #ca8a04; font-weight: bold; font-size: 1.1rem; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; align-items: stretch; margin-top: 2rem; }
-    .pricing-card { display: flex; flex-direction: column; justify-content: space-between; background-color: #0b1329; border-radius: 12px; padding: 2.2rem 1.8rem; color: #ffffff !important; border: 1px solid #1e293b; }
-    .pricing-card.featured { border: 2px solid #eab308; position: relative; }
-    .badge { position: absolute; top: -14px; right: 50%; transform: translateX(50%); background-color: #eab308; color: #0f172a !important; font-size: 0.72rem; font-weight: 800; padding: 0.3rem 1rem; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
-    .card-header h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #ffffff !important; font-weight: 700; }
-    .price { font-size: 1.8rem; font-weight: bold; color: #eab308 !important; }
-    .price span { font-size: 0.95rem; color: #94a3b8 !important; font-weight: normal; }
-    .commitment { font-size: 0.85rem; color: #94a3b8 !important; margin-top: 0.2rem; }
-    .features-list { list-style: none; padding: 0; margin: 1.5rem 0; flex-grow: 1; }
-    .features-list li { position: relative; padding-left: 1.6rem; margin-bottom: 0.85rem; font-size: 0.9rem; line-height: 1.45; color: #e2e8f0 !important; }
-    .features-list li::before { content: "✓"; position: absolute; left: 0; color: #eab308; font-weight: bold; }
-    .btn { display: block; text-align: center; background-color: #1e293b; color: #ffffff !important; padding: 0.9rem; border-radius: 6px; font-weight: 700; margin-top: 1rem; min-height: 48px; }
-    .btn:hover { background-color: #334155; text-decoration: none; }
-    .btn-primary { background-color: #eab308; color: #0f172a !important; }
-    .btn-primary:hover { background-color: #ca8a04; }
-    .alacarte-container { background-color: #0b1329; border-radius: 16px; padding: 3rem 2.5rem; margin-top: 3rem; color: #ffffff !important; }
-    .alacarte-container h3 { color: #eab308 !important; margin-bottom: 2rem; font-size: 1.8rem; text-align: center; font-weight: 700; }
-    .alacarte-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem 2rem; }
-    .alacarte-list li { position: relative; padding-left: 1.5rem; padding-bottom: 0.8rem; border-bottom: 1px solid #1e293b; color: #e2e8f0 !important; font-size: 0.95rem; line-height: 1.5; }
-    .alacarte-list li::before { content: "•"; position: absolute; left: 0.4rem; color: #eab308; font-weight: bold; font-size: 1.2rem; }
-    .contact-section { background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 4rem 2rem; }
-    .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3.5rem; max-width: 1100px; margin: 0 auto; }
-    .contact-info h3 { font-size: 1.3rem; margin-bottom: 1.2rem; color: #0f172a !important; }
-    .contact-info p { margin: 1.2rem 0; font-size: 1.05rem; color: #0f172a !important; }
-    .contact-info a { color: #0f172a !important; font-weight: 700; }
-    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; background: #ffffff; padding: 2.2rem; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-    .form-group label { font-size: 0.9rem; font-weight: 600; color: #334155; }
-    .form-group input, .form-group textarea { padding: 0.85rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; font-family: inherit; color: #0f172a; }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-    .btn-submit { background-color: #14382c; color: #ffffff !important; border: none; padding: 1rem; border-radius: 6px; font-size: 1rem; font-weight: 700; cursor: pointer; min-height: 48px; transition: background-color 0.2s ease; }
-    .btn-submit:hover { background-color: #0d261e; }
-    footer { text-align: center; padding: 2.5rem 2rem; background-color: #0b1329; color: #94a3b8; font-size: 0.85rem; }
-    footer .disclaimer { margin-top: 1rem; font-size: 0.75rem; color: #64748b; max-width: 850px; margin-left: auto; margin-right: auto; line-height: 1.5; }
-    @media (max-width: 768px) { header { padding: 1rem 1.5rem; } .hero-container { padding: 2.5rem 1.5rem; gap: 2rem; } .btn-hero { width: 100%; text-align: center; } section { padding: 3rem 1.5rem; } .about-section { padding: 2.5rem 1.5rem; } .alacarte-container { padding: 2rem 1.5rem; } }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-dark); background-color: #fff; line-height: 1.6; }
+
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #fff; border-bottom: 1px solid var(--border); max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 0.75rem; }
+    .logo-container { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--primary); }
+    .logo-img { height: 38px; width: auto; object-fit: contain; }
+    .logo-text { font-weight: 800; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; color: var(--primary); }
+    
+    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    nav a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.9rem; }
+    nav a:hover { color: var(--primary); }
+    .lang-select { padding: 0.35rem 0.5rem; border-radius: 6px; border: 1px solid var(--border); background: #fff; font-family: inherit; font-size: 0.85rem; cursor: pointer; }
+
+    /* Mobiloptimering af header */
+    @media (max-width: 768px) {
+      header { padding: 0.75rem 1rem; justify-content: space-between; }
+      nav { gap: 0.75rem; }
+      nav a { font-size: 0.85rem; margin-left: 0; }
+    }
+
+    /* Hero Section */
+    .hero { padding: 3.5rem 1rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    .hero-content { text-align: left; }
+    .hero-tag { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #8c6d46; margin-bottom: 0.5rem; }
+    .hero h1 { font-size: 2.1rem; line-height: 1.2; font-weight: 800; color: var(--text-dark); margin-bottom: 0.85rem; }
+    .hero-lead { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .hero-sublead { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.75rem; font-style: italic; }
+    .hero p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.6; }
+
+    .hero-checklist { list-style: none; margin-bottom: 1.75rem; }
+    .hero-checklist li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .hero-checklist li::before { content: "✓"; display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; border: 1px solid #8c6d46; color: #8c6d46; font-size: 0.75rem; font-weight: bold; flex-shrink: 0; }
+
+    .btn-cta { display: block; width: 100%; text-align: center; background-color: var(--primary); color: #fff; font-weight: 700; padding: 0.9rem 1.5rem; border-radius: 8px; text-decoration: none; font-size: 1rem; transition: background 0.2s ease; margin-bottom: 0.5rem; }
+    .btn-cta:hover { background-color: var(--primary-hover); }
+    .cta-note { font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.4; }
+
+    .hero-image-container { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,0.1); border: 1px solid var(--border); }
+    .hero-img { width: 100%; height: auto; max-height: 450px; object-fit: cover; display: block; }
+
+    /* Feature Highlights */
+    .features { padding: 3.5rem 1rem; background-color: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .features-container { max-width: 1100px; margin: 0 auto; }
+    .features h2 { text-align: center; margin-bottom: 2rem; font-size: 1.6rem; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .card { background: #fff; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+    .card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--text-dark); font-weight: 600; }
+    .card p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* About Section */
+    .about { padding: 4rem 1rem; background-color: #fff; border-bottom: 1px solid var(--border); }
+    .about-container { max-width: 1000px; margin: 0 auto; }
+    .about h2 { font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 1rem; text-align: center; }
+    .about-intro { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.25rem; text-align: center; max-width: 850px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .about-lead { font-size: 1rem; color: var(--text-dark); margin-bottom: 2rem; text-align: center; line-height: 1.7; }
+    
+    .about-subtitle { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1.5rem; text-align: center; }
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+    .about-card { background: var(--bg-light); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border); }
+    .about-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
+    .about-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    .about-footer { margin-top: 2.5rem; text-align: center; font-size: 1rem; font-weight: 600; color: var(--text-dark); max-width: 800px; margin-left: auto; margin-right: auto; }
+
+    /* Pricing Section */
+    .pricing { padding: 4rem 1rem; max-width: 1150px; margin: 0 auto; }
+    .pricing h2 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .pricing-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; align-items: stretch; }
+    
+    .price-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; display: flex; flex-direction: column; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+    .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+    .price-card.popular { border: 2px solid var(--primary); }
+    .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 20px; letter-spacing: 1px; }
+    
+    .price-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+    .price-features { list-style: none; margin-bottom: 1.75rem; flex-grow: 1; }
+    .price-features li { padding: 0.5rem 0; border-bottom: 1px solid #f1f5f9; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .price-features li::before { content: "✓"; color: var(--primary); font-weight: bold; }
+    
+    .price-btn { text-align: center; background: var(--bg-light); color: var(--primary); border: 1px solid var(--border); padding: 0.7rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
+    .price-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Contact Section */
+    .contact { padding: 4rem 1rem; background-color: var(--bg-light); border-top: 1px solid var(--border); }
+    .contact-container { max-width: 600px; margin: 0 auto; text-align: center; }
+    .contact h2 { font-size: 1.7rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .contact p { color: var(--text-muted); margin-bottom: 1.75rem; font-size: 0.95rem; }
+    .form-group { margin-bottom: 1.1rem; text-align: left; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.95rem; }
+    .form-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.85rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+    .form-submit:hover { background: var(--primary-hover); }
+
+    footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo-container">
-      <a href="#"><img src="35030.png" alt="NordicAzur Logo"></a>
-      <span class="logo-text" data-i18n="logoText">NordicAzur</span>
-    </div>
+    <a href="#" class="logo-container">
+      <img src="logo.png" alt="NordicAzur Logo" class="logo-img" onerror="this.style.display='none';">
+      <span class="logo-text">NordicAzur</span>
+    </a>
     <nav>
-      <a href="#services" data-i18n="navServices">Services</a>
-      <a href="#about" data-i18n="navAbout">About</a>
-      <a href="#pricing" data-i18n="navPackages">Packages</a>
-      <a href="#contact" data-i18n="navContact">Contact</a>
-      <select id="lang-select">
-        <option value="en">GB English</option>
-        <option value="da">DK Dansk</option>
-        <option value="de">DE Deutsch</option>
-        <option value="fi">FI Suomi</option>
-        <option value="fr">FR Français</option>
-        <option value="it">IT Italiano</option>
-        <option value="nl">NL Nederlands</option>
-        <option value="no">NO Norsk</option>
-        <option value="ru">RU Русский</option>
-        <option value="sv">SE Svensk</option>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#pricing" data-i18n="nav_pricing">Packages</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="da">Dansk</option>
+        <option value="fr">Français</option>
+        <option value="nl">Nederlands</option>
+        <option value="de">Deutsch</option>
+        <option value="sv">Svenska</option>
+        <option value="no">Norsk</option>
       </select>
     </nav>
   </header>
 
-  <main>
-    <div class="hero-container">
-      <div class="hero-text">
-        <div class="sub-tag" data-i18n="heroSubTag">NORDICAZUR · PROPERTY CARE & CONCIERGE</div>
-        <h1 data-i18n="heroTitle">Peace of Mind for Your Home on the French Riviera</h1>
-        <p class="hero-lead" data-i18n="heroLead">Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.</p>
-        <p class="hero-p" data-i18n="heroP">Your home deserves attention, even when you are away. NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.</p>
-        <ul class="hero-bullets">
-          <li data-i18n="heroBullet1">Regular property visits</li>
-          <li data-i18n="heroBullet2">Photo reports after inspections</li>
-          <li data-i18n="heroBullet3">Coordination of maintenance by agreement</li>
-          <li data-i18n="heroBullet4">Personal contact and clear communication</li>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag" data-i18n="hero_tag">NORDICAZUR · PROPERTY CARE & CONCIERGE</div>
+        <h1 data-i18n="hero_title">Peace of Mind for Your Home on the French Riviera</h1>
+        <div class="hero-lead" data-i18n="hero_lead">Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.</div>
+        <div class="hero-sublead" data-i18n="hero_sublead">Your home deserves attention, even when you are away.</div>
+        <p data-i18n="hero_desc">NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.</p>
+        
+        <ul class="hero-checklist">
+          <li data-i18n="hero_check_1">Regular property visits</li>
+          <li data-i18n="hero_check_2">Photo reports after inspections</li>
+          <li data-i18n="hero_check_3">Coordination of maintenance by agreement</li>
+          <li data-i18n="hero_check_4">Personal contact and clear communication</li>
         </ul>
-        <a href="#contact" class="btn-hero" data-i18n="heroBtn">Book a Free Property Consultation</a>
-        <p class="hero-subtext" data-i18n="heroSubtext">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</p>
+
+        <a href="#contact" class="btn-cta" data-i18n="hero_cta">Book a Free Property Consultation</a>
+        <div class="cta-note" data-i18n="cta_note">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</div>
       </div>
-      <div class="hero-image">
-        <img src="villa.jfif" alt="Villa in French Riviera">
+      
+      <div class="hero-image-container">
+        <img src="hero.jpg" alt="Villa in French Riviera" class="hero-img">
       </div>
     </div>
+  </section>
 
-    <section id="services">
-      <h2 data-i18n="servicesTitle">Why Choose NordicAzur?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="icon">🗣️</div>
-          <h3 data-i18n="feature1Title">Multilingual Bridge</h3>
-          <p data-i18n="feature1Desc">Fluent Scandinavian languages and English communication combined with local French operational expertise. No language barrier with local artisans.</p>
+  <!-- Feature Highlights -->
+  <section class="features" id="services">
+    <div class="features-container">
+      <h2 data-i18n="features_title">Why Choose NordicAzur?</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3 data-i18n="feat_1_title">Multilingual Bridge</h3>
+          <p data-i18n="feat_1_desc">Seamless communication in Scandinavian languages and English paired with local French operational expertise. No language barrier with local artisans.</p>
         </div>
-        <div class="feature-card">
-          <div class="icon">📱</div>
-          <h3 data-i18n="feature2Title">Digital Visual Reports</h3>
-          <p data-i18n="feature2Desc">Receive comprehensive status updates with photos and videos delivered directly to your phone after every inspection visit.</p>
+        <div class="card">
+          <div class="card-icon">📸</div>
+          <h3 data-i18n="feat_2_title">Digital Visual Reports</h3>
+          <p data-i18n="feat_2_desc">Receive comprehensive status updates with photos and videos delivered directly to your phone after every inspection visit.</p>
         </div>
-        <div class="feature-card">
-          <div class="icon">📍</div>
-          <h3 data-i18n="feature3Title">Hyper-Local Presence</h3>
-          <p data-i18n="feature3Desc">Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="about-section">
-      <h2 data-i18n="aboutTitle">About NordicAzur – Peace of Mind & Quality Care</h2>
-      <div class="about-content">
-        <p data-i18n="aboutP1">Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane who has lived permanently in Vence and on the French Riviera with his family for many years.</p>
-        <p data-i18n="aboutP2">With a background of more than 15 years of experience in the professional business sector within advisory, sales, and project management, NordicAzur is built on core values such as reliability, clear communication, and uncompromising quality.</p>
-        <ul class="about-highlights">
-          <li data-i18n="aboutHighlight1"><strong>Scandinavian Structure & Punctuality:</strong> You can rely on agreements being kept to the letter and your home being looked after to the highest standard.</li>
-          <li data-i18n="aboutHighlight2"><strong>Local Presence & Network:</strong> Having lived in the area for many years, I possess deep knowledge of local conditions, property maintenance needs, and vetted local artisans.</li>
-          <li data-i18n="aboutHighlight3"><strong>Direct & Transparent Communication:</strong> You get a single, dedicated point of contact. Receive regular visual reports in your preferred language (Danish, English, or French) for complete peace of mind – wherever you are in the world.</li>
-          <li data-i18n="aboutHighlight4"><strong>Personal Commitment:</strong> Your home is never just another number on a list. NordicAzur is driven by a passion for delivering tailored, personal service that cares for both the big picture and the finest details.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <h2 data-i18n="pricingTitle">Services & Pricing Structure</h2>
-      <p class="section-intro" data-i18n="pricingIntro">The business uses a tiered subscription framework supplemented by an à la carte menu to secure baseline cash flow through the off-season while capturing high margin during summer.</p>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <div>
-            <div class="card-header">
-              <h3 data-i18n="plan1Title">Essential Inspection</h3>
-              <div class="price">€130 – €180 <span data-i18n="perMonth">/ month</span></div>
-              <p class="commitment" data-i18n="plan1Commitment">(Min. 6- or 12-month commitment)</p>
-            </div>
-            <ul class="features-list">
-              <li data-i18n="plan1Item1">2 physical inspections per month.</li>
-              <li data-i18n="plan1Item2">Mail collection & urgent forwarding (To prevent a vacant house appearance).</li>
-              <li data-i18n="plan1Item3">Post-storm visual check (after major regional weather alerts. Checks are triggered by official weather alerts e.g. Meteo France orange/rouge warning).</li>
-              <li data-i18n="plan1Item4">Utility cycling (flushing toilets/taps to avoid sewer odors; running AC/heating brief test).</li>
-              <li data-i18n="plan1Item5">Visual check of grounds/pool status (detecting leaks, equipment faults, green water).</li>
-              <li data-i18n="plan1Item6">Digital photo status report sent after each visit.</li>
-              <li data-i18n="plan1Item7">Secure keyholding.</li>
-              <li data-i18n="plan1Item8">Perimeter & Security Integrity check. (Inspect gates, fences, doors, windows and shutters for signs of forced entry/ vandalism).</li>
-              <li data-i18n="plan1Item9">Utility meter readings. (water & electricity). Log meter numbers during visits to flag hidden plumbing leaks or unexpected power drains early.</li>
-              <li data-i18n="plan1Item10">Security & Alarm systems visual check. Verify that security keypads, motion detectors and camera indicator lights are active and functioning.</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn" data-i18n="selectPlanBtn">Select Plan</a>
-        </div>
-
-        <div class="pricing-card featured">
-          <div class="badge" data-i18n="mostPopularBadge">Most Popular</div>
-          <div>
-            <div class="card-header">
-              <h3 data-i18n="plan2Title">Comfort Home</h3>
-              <div class="price">€280 – €390 <span data-i18n="perMonth">/ month</span></div>
-              <p class="commitment" data-i18n="plan2Commitment">(Min. 6-month commitment)</p>
-            </div>
-            <ul class="features-list">
-              <li data-i18n="plan2Item1">4 inspections per month (weekly cadence).</li>
-              <li data-i18n="plan2Item2">All checks from Essential Inspection included.</li>
-              <li data-i18n="plan2Item3">Pre-arrival preparation (turning on hot water, heating/cooling, setting outdoor furniture).</li>
-              <li data-i18n="plan2Item4">Post-departure walkthrough & lockdown.</li>
-              <li data-i18n="plan2Item5">Up to 2 hours of contractor/artisan access coordination per month (non-cumulative).</li>
-              <li data-i18n="plan2Item6">Potted plant care & irrigation checks. (Water indoor & outdoor potted plants and verify that automatic drip system or garden timers are running properly).</li>
-              <li data-i18n="plan2Item7">Outdoor & Patio furniture setup. (Uncover, wipe down, and setup lounge chairs, dining table and sun umbrellas before arrival and store/cover them after departure).</li>
-              <li data-i18n="plan2Item8">Indoor air cycling & Ventilation. (Open windows during weekly visits to cycle fresh air and preventing humidity build up, stale odors and mold).</li>
-              <li data-i18n="plan2Item9">Vehicle maintenance check. (Brief battery check and/or short engine start for car parked long term at place). (Optional add-on).</li>
-              <li data-i18n="plan2Item10">Welcome grocery & fridge stocking. (Buy basic groceries or custom provisions prior to arrival (billed at item cost + a modest service fee).</li>
-              <li data-i18n="plan2Item11">Seasonal opening & Closing.</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn btn-primary" data-i18n="selectPlanBtn">Select Plan</a>
-        </div>
-
-        <div class="pricing-card">
-          <div>
-            <div class="card-header">
-              <h3 data-i18n="plan3Title">Premium Rental Management</h3>
-              <div class="price">€200 <span data-i18n="moBase">/ mo base</span></div>
-              <p class="commitment" data-i18n="plan3Commitment">+ €120 – €180 per guest turnaround (or 15–20% commission on rental turnover)</p>
-            </div>
-            <ul class="features-list">
-              <li data-i18n="plan3Item1">Keyholding & unlimited access handling.</li>
-              <li data-i18n="plan3Item2">Pre-stay staging & post-stay inspection.</li>
-              <li data-i18n="plan3Item3">Turnaround management (coordinating/inspecting cleaning and linen teams).</li>
-              <li data-i18n="plan3Item4">24/7 guest helpline for urgent domestic issues during active stays.</li>
-            </ul>
-          </div>
-          <a href="#contact" class="btn" data-i18n="selectPlanBtn">Select Plan</a>
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <h3 data-i18n="feat_3_title">Hyper-Local Presence</h3>
+          <p data-i18n="feat_3_desc">Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="alacarte-container">
-        <h3 data-i18n="alacarteTitle">À la carte Services</h3>
-        <ul class="alacarte-list">
-          <li data-i18n="alacarte1">Meet-and-greet in-person check-in / check-out</li>
-          <li data-i18n="alacarte2">Personal grocery shopping & pantry stocking</li>
-          <li data-i18n="alacarte3">Artisan waiting & project monitoring exceeding included hours</li>
-          <li data-i18n="alacarte4">Emergency call-outs & after-hours interventions</li>
-          <li data-i18n="alacarte5">Standard daytime rate: <strong>€50 / hour</strong></li>
-          <li data-i18n="alacarte6">Emergency/after-hours (20:00–08:00, Sundays/holidays): <strong>€80 – €90 / hour</strong></li>
-          <li data-i18n="alacarte7">Welcome Baskets: <strong>€45 – €75 fixed (plus item costs)</strong></li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <h2 data-i18n="contactTitle">Get in Touch</h2>
-      <p class="section-intro" data-i18n="contactIntro">Let us handle your property care in Vence and surrounding areas. Request a consultation or ask any questions below.</p>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <h2 data-i18n="about_title">About NordicAzur – Peace of mind and quality in property care</h2>
+      <p class="about-intro" data-i18n="about_intro">Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane who has lived in Vence and on the French Riviera with his family for many years.</p>
+      <p class="about-lead" data-i18n="about_lead">With a background of more than 15 years of experience in the professional business sector within consulting and project management, NordicAzur is built on core values such as reliability, clear communication, and uncompromising quality.</p>
       
-      <div class="contact-container">
-        <div class="contact-info">
-          <h3 data-i18n="contactInfoTitle">Contact Information</h3>
-          <p>📍 <strong data-i18n="locationLabel">Location:</strong> <span data-i18n="locationVal">Vence, Côte d'Azur, France</span></p>
-          <p>📧 <strong data-i18n="emailLabel">Email:</strong> <a href="mailto:contact@nordicazur.com">contact@nordicazur.com</a></p>
-          <p>📞 <strong data-i18n="phoneLabel">Phone / WhatsApp:</strong> <a href="tel:+33672919159">+33 6 72 91 91 59</a></p>
+      <h3 class="about-subtitle" data-i18n="about_why_title">Why choose NordicAzur?</h3>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <h3 data-i18n="about_card1_title">Scandinavian structure & punctuality</h3>
+          <p data-i18n="about_card1_desc">You can rely on agreements being kept to the letter and your home being looked after to the highest standard.</p>
         </div>
-
-        <form class="contact-form" action="https://formsubmit.co/contact@nordicazur.com" method="POST">
-          <div class="form-group">
-            <label for="name" data-i18n="formName">Name *</label>
-            <input type="text" id="name" name="name" required placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label for="email" data-i18n="formEmail">Email *</label>
-            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-          </div>
-          <div class="form-group">
-            <label for="phone" data-i18n="formPhone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="+33 6 00 00 00 00">
-          </div>
-          <div class="form-group">
-            <label for="message" data-i18n="formMessage">Message / Consultation Request *</label>
-            <textarea id="message" name="message" required placeholder="Tell us about your property and how we can help..."></textarea>
-          </div>
-          <button type="submit" class="btn-submit" data-i18n="formSubmit">Send Message</button>
-        </form>
+        <div class="about-card">
+          <h3 data-i18n="about_card2_title">Local presence & network</h3>
+          <p data-i18n="about_card2_desc">With many years of permanent residence in the area, I have in-depth knowledge of local conditions, challenges, and selected suppliers.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card3_title">Direct & transparent communication</h3>
+          <p data-i18n="about_card3_desc">You get a dedicated personal contact. You always receive updates and reporting in your own language (Danish, English, or French) for complete peace of mind.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card4_title">Personal engagement</h3>
+          <p data-i18n="about_card4_desc">To me, your property is not just another number. NordicAzur is driven by a passion to deliver tailored, attentive service for both the big picture and the small details.</p>
+        </div>
       </div>
-    </section>
-  </main>
+
+      <div class="about-footer" data-i18n="about_footer">Whether you need supervision for your holiday home, coordination of craftsmen, or help with ongoing maintenance and practical tasks, NordicAzur is your trusted partner on the Côte d'Azur.</div>
+    </div>
+  </section>
+
+  <!-- Pricing / Service Packages -->
+  <section class="pricing" id="pricing">
+    <h2 data-i18n="pricing_title">Tailored Care Packages</h2>
+    <p class="pricing-subtitle" data-i18n="pricing_subtitle">Detailed care plans tailored to your property's specific needs.</p>
+    <div class="pricing-grid">
+      
+      <!-- Tier 1 -->
+      <div class="price-card">
+        <h3 data-i18n="tier1_title">Essential Inspection</h3>
+        <ul class="price-features">
+          <li data-i18n="tier1_f1">2 physical property checks per month</li>
+          <li data-i18n="tier1_f2">Secure keyholding & mail forwarding</li>
+          <li data-i18n="tier1_f3">Post-storm weather inspection</li>
+          <li data-i18n="tier1_f4">Airing out & meter readings</li>
+          <li data-i18n="tier1_f5">Digital photo report after each visit</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="price-card popular">
+        <div class="popular-badge" data-i18n="popular_badge">Most Popular</div>
+        <h3 data-i18n="tier2_title">Comfort Home</h3>
+        <ul class="price-features">
+          <li data-i18n="tier2_f1">4 weekly inspections per month</li>
+          <li data-i18n="tier2_f2">All features of the Essential tier</li>
+          <li data-i18n="tier2_f3">Pre-arrival preparation & heating/AC setup</li>
+          <li data-i18n="tier2_f4">Post-departure walk-through & lockdown</li>
+          <li data-i18n="tier2_f5">Potted plant care & watering check</li>
+          <li data-i18n="tier2_f6">2 hrs/month contractor coordination</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="price-card">
+        <h3 data-i18n="tier3_title">Premium Rental Care</h3>
+        <ul class="price-features">
+          <li data-i18n="tier3_f1">Key handling & 24/7 guest hotline</li>
+          <li data-i18n="tier3_f2">Pre-stay prep & post-stay inspection</li>
+          <li data-i18n="tier3_f3">Cleaning & linen team supervision</li>
+          <li data-i18n="tier3_f4">Custom concierge support for owners</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <h2 data-i18n="contact_title">Book a Free Property Consultation</h2>
+      <p data-i18n="contact_subtitle">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</p>
+      <form onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
+        <div class="form-group">
+          <label data-i18n="form_name">Name</label>
+          <input type="text" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_email">Email</label>
+          <input type="email" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_message">Property details & wishes</label>
+          <textarea rows="4" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" data-i18n="form_button">Send Message</button>
+      </form>
+    </div>
+  </section>
 
   <footer>
-    <p data-i18n="footerCopy">© 2026 NordicAzur. All rights reserved. | Property Care & Concierge Services On The French Riviera</p>
-    <p class="disclaimer" data-i18n="footerDisclaimer">
-      Disclaimer: Translations have been prepared with the assistance of artificial intelligence (AI). While every effort has been made to ensure accuracy, we cannot guarantee that the translations are error-free.
-    </p>
+    <p>&copy; NordicAzur. All rights reserved.</p>
   </footer>
 
-  <script src="translations.js"></script>
   <script>
-  function applyLanguage(targetLang) {
-    if (!window.i18nTranslations) return;
-    const langKey = Object.keys(i18nTranslations).find(
-      k => k.toLowerCase() === targetLang.toLowerCase()
-    );
-    const translations = i18nTranslations[langKey];
-    if (!translations) return;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (translations[key]) {
-        el.innerHTML = translations[key];
+    const i18nTranslations = {
+      "en": {
+        "nav_services": "Services",
+        "nav_about": "About",
+        "nav_pricing": "Packages",
+        "nav_contact": "Contact",
+        "hero_tag": "NORDICAZUR · PROPERTY CARE & CONCIERGE",
+        "hero_title": "Peace of Mind for Your Home on the French Riviera",
+        "hero_lead": "Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.",
+        "hero_sublead": "Your home deserves attention, even when you are away.",
+        "hero_desc": "NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.",
+        "hero_check_1": "Regular property visits",
+        "hero_check_2": "Photo reports after inspections",
+        "hero_check_3": "Coordination of maintenance by agreement",
+        "hero_check_4": "Personal contact and clear communication",
+        "hero_cta": "Book a Free Property Consultation",
+        "cta_note": "Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.",
+        "features_title": "Why Choose NordicAzur?",
+        "feat_1_title": "Multilingual Bridge",
+        "feat_1_desc": "Seamless communication in Scandinavian languages and English paired with local French operational expertise. No language barrier with local artisans.",
+        "feat_2_title": "Digital Visual Reports",
+        "feat_2_desc": "Receive comprehensive status updates with photos and videos delivered directly to your phone after every inspection visit.",
+        "feat_3_title": "Hyper-Local Presence",
+        "feat_3_desc": "Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.",
+        "about_title": "About NordicAzur – Peace of mind and quality in property care",
+        "about_intro": "Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane who has lived in Vence and on the French Riviera with his family for many years.",
+        "about_lead": "With a background of more than 15 years of experience in the professional business sector within consulting and project management, NordicAzur is built on core values such as reliability, clear communication, and uncompromising quality.",
+        "about_why_title": "Why choose NordicAzur?",
+        "about_card1_title": "Scandinavian structure & punctuality",
+        "about_card1_desc": "You can rely on agreements being kept to the letter and your home being looked after to the highest standard.",
+        "about_card2_title": "Local presence & network",
+        "about_card2_desc": "With many years of permanent residence in the area, I have in-depth knowledge of local conditions, challenges, and selected suppliers.",
+        "about_card3_title": "Direct & transparent communication",
+        "about_card3_desc": "You get a dedicated personal contact. You always receive updates and reporting in your own language (Danish, English, or French) for complete peace of mind.",
+        "about_card4_title": "Personal engagement",
+        "about_card4_desc": "To me, your property is not just another number. NordicAzur is driven by a passion to deliver tailored, attentive service for both the big picture and the small details.",
+        "about_footer": "Whether you need supervision for your holiday home, coordination of craftsmen, or help with ongoing maintenance and practical tasks, NordicAzur is your trusted partner on the Côte d'Azur.",
+        "pricing_title": "Tailored Care Packages",
+        "pricing_subtitle": "Detailed care plans tailored to your property's specific needs.",
+        "tier1_title": "Essential Inspection",
+        "tier1_f1": "2 physical property checks per month",
+        "tier1_f2": "Secure keyholding & mail forwarding",
+        "tier1_f3": "Post-storm weather inspection",
+        "tier1_f4": "Airing out & meter readings",
+        "tier1_f5": "Digital photo report after each visit",
+        "tier2_title": "Comfort Home",
+        "tier2_f1": "4 weekly inspections per month",
+        "tier2_f2": "All features of the Essential tier",
+        "tier2_f3": "Pre-arrival preparation & heating/AC setup",
+        "tier2_f4": "Post-departure walk-through & lockdown",
+        "tier2_f5": "Potted plant care & watering check",
+        "tier2_f6": "2 hrs/month contractor coordination",
+        "tier3_title": "Premium Rental Care",
+        "tier3_f1": "Key handling & 24/7 guest hotline",
+        "tier3_f2": "Pre-stay prep & post-stay inspection",
+        "tier3_f3": "Cleaning & linen team supervision",
+        "tier3_f4": "Custom concierge support for owners",
+        "popular_badge": "Most Popular",
+        "select_plan": "Select Plan",
+        "contact_title": "Book a Free Property Consultation",
+        "contact_subtitle": "Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.",
+        "form_name": "Name",
+        "form_email": "Email",
+        "form_message": "Property details & wishes",
+        "form_button": "Send Message"
       }
-    });
-    document.documentElement.lang = targetLang;
-  }
+    };
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const langSelect = document.getElementById('lang-select');
-    if (!langSelect) return;
-    langSelect.addEventListener('change', function() {
-      applyLanguage(this.value);
-    });
-    if (langSelect.value && langSelect.value.toLowerCase() !== 'en') {
-      applyLanguage(langSelect.value);
+    function setLanguage(lang) {
+      try {
+        const dict = (i18nTranslations && i18nTranslations[lang]) ? i18nTranslations[lang] : (i18nTranslations ? i18nTranslations['en'] : null);
+        if (!dict) return;
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) {
+            el.textContent = dict[key];
+          }
+        });
+        const select = document.getElementById('langSelect');
+        if (select) select.value = lang;
+      } catch (e) {
+        console.error("Language switch error:", e);
+      }
     }
-  });
-</script>
+
+    function changeLanguage(lang) {
+      localStorage.setItem('nordicazur_lang', lang);
+      setLanguage(lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('nordicazur_lang') || 'en';
+      setLanguage(savedLang);
+    });
+  </script>
 </body>
 </html>
- 
