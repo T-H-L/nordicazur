@@ -900,8 +900,10 @@
     "plan3Item3": "Omstillingsledelse (koordinering og tilsyn med rengjørings- og vaskeriteamene).",
  
 
-<script src="translations.js"></script>
+<!-- 1. Først hentes translations.js som sin egen selvstændige fil -->
+  <script src="translations.js"></script>
 
+  <!-- 2. Derefter kommer selve logikken i sin egen lukkede script-blok -->
   <script>
     function applyLanguage(targetLang) {
       if (!window.i18nTranslations) return;
