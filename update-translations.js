@@ -105,10 +105,15 @@ async function run() {
     }
   }
 
-  const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
+ const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
   
-  // DETTE ER AFGØRENDE: Vi udskifter KUN selve i18nTranslations-objektet og bevarer alt andet i filen uændret!
-  const updatedContent = content.substring(0, startIndex) + updatedJs + content.substring(jsonEnd + 2);
+  const scriptTagIndex = content.indexOf('<script>', startIndex);
+  if (scriptTagIndex === -1) {
+    console.error("Kunne ikke finde <script> efter i18nTranslations i index.html");
+    process.exit(1);
+  }
+
+  const updatedContent = content.substring(0, startIndex) + updatedJs + '\n\n  ' + content.substring(scriptTagIndex);
 
   fs.writeFileSync(HTML_FILE, updatedContent, 'utf8');
   console.log("Succes! i18nTranslations er opdateret, og resten af index.html er intakt.");
