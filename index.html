@@ -108,4 +108,270 @@
     .about-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
     .about-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
-    .about-footer { margin
+    .about-footer { margin-top: 2.5rem; text-align: center; font-size: 1rem; font-weight: 600; color: var(--text-dark); max-width: 800px; margin-left: auto; margin-right: auto; }
+
+    /* Pricing Section */
+    .pricing { padding: 4rem 1rem 2rem; max-width: 1150px; margin: 0 auto; }
+    .pricing h2 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .pricing-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; align-items: stretch; }
+    
+    .price-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; display: flex; flex-direction: column; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+    .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+    .price-card.popular { border: 2px solid var(--primary); }
+    .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 20px; letter-spacing: 1px; }
+    
+    .price-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+    .price-features { list-style: none; margin-bottom: 1.75rem; flex-grow: 1; }
+    .price-features li { padding: 0.5rem 0; border-bottom: 1px solid #f1f5f9; color: var(--text-muted); font-size: 0.9rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .price-features li::before { content: "✓"; color: var(--primary); font-weight: bold; }
+    
+    .price-btn { text-align: center; background: var(--bg-light); color: var(--primary); border: 1px solid var(--border); padding: 0.7rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
+    .price-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* A La Carte Services Box (Under Packages) */
+    .alacarte { padding: 1.5rem 1rem 4rem; max-width: 1150px; margin: 0 auto; }
+    .alacarte-box { background: var(--bg-light); padding: 2.5rem 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
+    .alacarte-box h3 { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+    .alacarte-intro { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
+    .alacarte-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+    .alacarte-item { background: #fff; padding: 1.25rem 1.5rem; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
+    .alacarte-icon { font-size: 1.3rem; color: var(--primary); }
+    .alacarte-text { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
+
+    /* Contact Section */
+    .contact { padding: 4rem 1rem; background-color: #fff; border-top: 1px solid var(--border); }
+    .contact-container { max-width: 900px; margin: 0 auto; }
+    .contact h2 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .contact-sub { text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+    
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+    @media (min-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr 1.2fr; }
+    }
+
+    .contact-info-box { background: var(--bg-light); padding: 2rem; border-radius: 10px; border: 1px solid var(--border); text-align: left; }
+    .contact-info-box h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-dark); }
+    .info-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1.25rem; font-size: 0.95rem; color: var(--text-dark); }
+    .info-item-icon { font-size: 1.2rem; }
+    .info-item a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .info-item a:hover { text-decoration: underline; }
+
+    .form-group { margin-bottom: 1.1rem; text-align: left; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.95rem; }
+    .form-submit { width: 100%; background: var(--primary); color: #fff; border: none; padding: 0.85rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+    .form-submit:hover { background: var(--primary-hover); }
+
+    /* Footer & Disclaimer */
+    footer { text-align: center; padding: 2.5rem 1rem; border-top: 1px solid var(--border); background: var(--bg-light); color: var(--text-muted); font-size: 0.85rem; }
+    .ai-disclaimer { margin-top: 0.75rem; font-size: 0.78rem; color: #94a3b8; font-style: italic; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <a href="#" class="logo-container">
+        <img src="logo.png" alt="NordicAzur Logo" class="logo-img">
+      </a>
+      <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="da">Dansk</option>
+        <option value="fr">Français</option>
+        <option value="nl">Nederlands</option>
+        <option value="de">Deutsch</option>
+        <option value="sv">Svenska</option>
+        <option value="no">Norsk</option>
+      </select>
+    </div>
+    <nav>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#pricing" data-i18n="nav_pricing">Packages</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag" data-i18n="hero_tag">NORDICAZUR · PROPERTY CARE & CONCIERGE</div>
+        <h1 data-i18n="hero_title">Peace of Mind for Your Home on the French Riviera</h1>
+        <div class="hero-lead" data-i18n="hero_lead">Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.</div>
+        <div class="hero-sublead" data-i18n="hero_sublead">Your home deserves attention, even when you are away.</div>
+        <p data-i18n="hero_desc">NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.</p>
+        
+        <ul class="hero-checklist">
+          <li data-i18n="hero_check_1">Regular property visits</li>
+          <li data-i18n="hero_check_2">Photo reports after inspections</li>
+          <li data-i18n="hero_check_3">Coordination of maintenance by agreement</li>
+          <li data-i18n="hero_check_4">Personal contact and clear communication</li>
+        </ul>
+
+        <a href="#contact" class="btn-cta" data-i18n="hero_cta">Book a Free Property Consultation</a>
+        <div class="cta-note" data-i18n="cta_note">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</div>
+      </div>
+      
+      <div class="hero-image-container">
+        <img src="hero.jpg" alt="Villa in French Riviera" class="hero-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Highlights -->
+  <section class="features" id="services">
+    <div class="features-container">
+      <h2 data-i18n="features_title">Why Choose NordicAzur?</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3 data-i18n="feat_1_title">Multilingual Bridge</h3>
+          <p data-i18n="feat_1_desc">Seamless communication in Scandinavian languages and English paired with local French operational expertise. No language barrier with local artisans.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📸</div>
+          <h3 data-i18n="feat_2_title">Digital Visual Reports</h3>
+          <p data-i18n="feat_2_desc">Receive comprehensive status updates with photos and videos delivered directly to your phone after every inspection visit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <h3 data-i18n="feat_3_title">Hyper-Local Presence</h3>
+          <p data-i18n="feat_3_desc">Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <h2 data-i18n="about_title">About NordicAzur – Peace of mind and quality in property care</h2>
+      <p class="about-intro" data-i18n="about_intro">Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane who has lived in Vence and on the French Riviera with his family for many years.</p>
+      <p class="about-lead" data-i18n="about_lead">With a background of more than 15 years of experience in the professional business sector within consulting and project management, NordicAzur is built on core values such as reliability, clear communication, and uncompromising quality.</p>
+      
+      <h3 class="about-subtitle" data-i18n="about_why_title">Why choose NordicAzur?</h3>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <h3 data-i18n="about_card1_title">Scandinavian structure & punctuality</h3>
+          <p data-i18n="about_card1_desc">You can rely on agreements being kept to the letter and your home being looked after to the highest standard.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card2_title">Local presence & network</h3>
+          <p data-i18n="about_card2_desc">With many years of permanent residence in the area, I have in-depth knowledge of local conditions, challenges, and selected suppliers.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card3_title">Direct & transparent communication</h3>
+          <p data-i18n="about_card3_desc">You get a dedicated personal contact. You always receive updates and reporting in your own language (Danish, English, or French) for complete peace of mind.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card4_title">Personal engagement</h3>
+          <p data-i18n="about_card4_desc">To me, your property is not just another number. NordicAzur is driven by a passion to deliver tailored, attentive service for both the big picture and the small details.</p>
+        </div>
+      </div>
+
+      <div class="about-footer" data-i18n="about_footer">Whether you need supervision for your holiday home, coordination of craftsmen, or help with ongoing maintenance and practical tasks, NordicAzur is your trusted partner on the Côte d'Azur.</div>
+    </div>
+  </section>
+
+  <!-- Pricing / Service Packages -->
+  <section class="pricing" id="pricing">
+    <h2 data-i18n="pricing_title">Tailored Care Packages</h2>
+    <p class="pricing-subtitle" data-i18n="pricing_subtitle">Detailed care plans tailored to your property's specific needs.</p>
+    <div class="pricing-grid">
+      
+      <!-- Tier 1 -->
+      <div class="price-card">
+        <h3 data-i18n="tier1_title">Essential Inspection</h3>
+        <ul class="price-features">
+          <li data-i18n="tier1_f1">2 physical property checks per month</li>
+          <li data-i18n="tier1_f2">Secure keyholding & mail forwarding</li>
+          <li data-i18n="tier1_f3">Post-storm & severe weather inspections</li>
+          <li data-i18n="tier1_f4">Airing out, humidity check & meter readings</li>
+          <li data-i18n="tier1_f5">Checking water, electricity & plumbing for leaks</li>
+          <li data-i18n="tier1_f6">Detailed digital photo report after each visit</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="price-card popular">
+        <div class="popular-badge" data-i18n="popular_badge">Most Popular</div>
+        <h3 data-i18n="tier2_title">Comfort Home</h3>
+        <ul class="price-features">
+          <li data-i18n="tier2_f1">4 weekly inspections per month</li>
+          <li data-i18n="tier2_f2">All features of the Essential tier included</li>
+          <li data-i18n="tier2_f3">Pre-arrival preparation (heating/AC, hot water, lights)</li>
+          <li data-i18n="tier2_f4">Post-departure walk-through, cleaning check & lockdown</li>
+          <li data-i18n="tier2_f5">Potted plant care, garden & pool visual status check</li>
+          <li data-i18n="tier2_f6">Up to 2 hours/month contractor coordination</li>
+          <li data-i18n="tier2_f7">Vehicle battery check & startup upon request</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="price-card">
+        <h3 data-i18n="tier3_title">Premium Rental Care</h3>
+        <ul class="price-features">
+          <li data-i18n="tier3_f1">Key handling & emergency guest hotline</li>
+          <li data-i18n="tier3_f2">Pre-stay prep & post-stay inspection for rental guests</li>
+          <li data-i18n="tier3_f3">Cleaning team & linen service supervision</li>
+          <li data-i18n="tier3_f4">Inventory check after guest departure</li>
+          <li data-i18n="tier3_f5">Custom concierge & local coordination for owners</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- A La Carte Section (Under Packages) -->
+  <section class="alacarte">
+    <div class="alacarte-box">
+      <h3 data-i18n="alacarte_title">A La Carte Services</h3>
+      <p class="alacarte-intro" data-i18n="alacarte_intro">Additional specialized services available upon request to complement your care package.</p>
+      
+      <div class="alacarte-grid">
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🔧</div>
+          <div class="alacarte-text" data-i18n="ala_1">Craftsman & Supplier Coordination</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🚨</div>
+          <div class="alacarte-text" data-i18n="ala_2">Emergency Call-outs & Alarm Response</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🚗</div>
+          <div class="alacarte-text" data-i18n="ala_3">Vehicle Maintenance & Battery Checks</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">📦</div>
+          <div class="alacarte-text" data-i18n="ala_4">Delivery Receipt & Furniture Assembly</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🌿</div>
+          <div class="alacarte-text" data-i18n="ala_5">Garden & Pool Supervision</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🧹</div>
+          <div class="alacarte-text" data-i18n="ala_6">Extra Deep Cleaning & Linen Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <h2 data-i18n="contact_title">Book a Free Property Consultation</h2>
+      <p class="contact-sub" data-i18n="contact_subtitle">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-info-box">
+          <h3 data-i18n="contact_info_title">Direct Contact</h3>
+          
+          <div class="info-item">
+            <span class="info-item-icon">
