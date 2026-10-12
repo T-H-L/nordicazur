@@ -18,7 +18,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text-dark); background-color: #fff; line-height: 1.6; }
 
-    /* Header med garanti for én linje til nav på mobil */
+    /* Header Structure */
     header { 
       background: #fff; 
       border-bottom: 1px solid var(--border); 
@@ -126,17 +126,17 @@
     .price-btn { text-align: center; background: var(--bg-light); color: var(--primary); border: 1px solid var(--border); padding: 0.7rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
     .price-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-    /* A La Carte (Direkte under pakkerne) */
-    .alacarte { padding: 2rem 1rem 4rem; max-width: 1150px; margin: 0 auto; }
+    /* A La Carte Services Box (Under Packages) */
+    .alacarte { padding: 1.5rem 1rem 4rem; max-width: 1150px; margin: 0 auto; }
     .alacarte-box { background: var(--bg-light); padding: 2.5rem 1.5rem; border-radius: 12px; border: 1px solid var(--border); }
-    .alacarte h3 { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+    .alacarte-box h3 { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
     .alacarte-intro { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem; }
     .alacarte-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
     .alacarte-item { background: #fff; padding: 1.25rem 1.5rem; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
     .alacarte-icon { font-size: 1.3rem; color: var(--primary); }
     .alacarte-text { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
 
-    /* Contact & Details Section */
+    /* Contact Section */
     .contact { padding: 4rem 1rem; background-color: #fff; border-top: 1px solid var(--border); }
     .contact-container { max-width: 900px; margin: 0 auto; }
     .contact h2 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
@@ -195,4 +195,351 @@
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="hero-tag" data-i18n="hero_tag">NORDICAZUR
+        <div class="hero-tag" data-i18n="hero_tag">NORDICAZUR · PROPERTY CARE & CONCIERGE</div>
+        <h1 data-i18n="hero_title">Peace of Mind for Your Home on the French Riviera</h1>
+        <div class="hero-lead" data-i18n="hero_lead">Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.</div>
+        <div class="hero-sublead" data-i18n="hero_sublead">Your home deserves attention, even when you are away.</div>
+        <p data-i18n="hero_desc">NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.</p>
+        
+        <ul class="hero-checklist">
+          <li data-i18n="hero_check_1">Regular property visits</li>
+          <li data-i18n="hero_check_2">Photo reports after inspections</li>
+          <li data-i18n="hero_check_3">Coordination of maintenance by agreement</li>
+          <li data-i18n="hero_check_4">Personal contact and clear communication</li>
+        </ul>
+
+        <a href="#contact" class="btn-cta" data-i18n="hero_cta">Book a Free Property Consultation</a>
+        <div class="cta-note" data-i18n="cta_note">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</div>
+      </div>
+      
+      <div class="hero-image-container">
+        <img src="hero.jpg" alt="Villa in French Riviera" class="hero-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Highlights -->
+  <section class="features" id="services">
+    <div class="features-container">
+      <h2 data-i18n="features_title">Why Choose NordicAzur?</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3 data-i18n="feat_1_title">Multilingual Bridge</h3>
+          <p data-i18n="feat_1_desc">Seamless communication in Scandinavian languages and English paired with local French operational expertise. No language barrier with local artisans.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📸</div>
+          <h3 data-i18n="feat_2_title">Digital Visual Reports</h3>
+          <p data-i18n="feat_2_desc">Receive comprehensive status updates with photos and videos delivered directly to your phone after every inspection visit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <h3 data-i18n="feat_3_title">Hyper-Local Presence</h3>
+          <p data-i18n="feat_3_desc">Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <h2 data-i18n="about_title">About NordicAzur – Peace of mind and quality in property care</h2>
+      <p class="about-intro" data-i18n="about_intro">Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane who has lived in Vence and on the French Riviera with his family for many years.</p>
+      <p class="about-lead" data-i18n="about_lead">With a background of more than 15 years of experience in the professional business sector within consulting and project management, NordicAzur is built on core values such as reliability, clear communication, and uncompromising quality.</p>
+      
+      <h3 class="about-subtitle" data-i18n="about_why_title">Why choose NordicAzur?</h3>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <h3 data-i18n="about_card1_title">Scandinavian structure & punctuality</h3>
+          <p data-i18n="about_card1_desc">You can rely on agreements being kept to the letter and your home being looked after to the highest standard.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card2_title">Local presence & network</h3>
+          <p data-i18n="about_card2_desc">With many years of permanent residence in the area, I have in-depth knowledge of local conditions, challenges, and selected suppliers.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card3_title">Direct & transparent communication</h3>
+          <p data-i18n="about_card3_desc">You get a dedicated personal contact. You always receive updates and reporting in your own language (Danish, English, or French) for complete peace of mind.</p>
+        </div>
+        <div class="about-card">
+          <h3 data-i18n="about_card4_title">Personal engagement</h3>
+          <p data-i18n="about_card4_desc">To me, your property is not just another number. NordicAzur is driven by a passion to deliver tailored, attentive service for both the big picture and the small details.</p>
+        </div>
+      </div>
+
+      <div class="about-footer" data-i18n="about_footer">Whether you need supervision for your holiday home, coordination of craftsmen, or help with ongoing maintenance and practical tasks, NordicAzur is your trusted partner on the Côte d'Azur.</div>
+    </div>
+  </section>
+
+  <!-- Pricing / Service Packages -->
+  <section class="pricing" id="pricing">
+    <h2 data-i18n="pricing_title">Tailored Care Packages</h2>
+    <p class="pricing-subtitle" data-i18n="pricing_subtitle">Detailed care plans tailored to your property's specific needs.</p>
+    <div class="pricing-grid">
+      
+      <!-- Tier 1 -->
+      <div class="price-card">
+        <h3 data-i18n="tier1_title">Essential Inspection</h3>
+        <ul class="price-features">
+          <li data-i18n="tier1_f1">2 physical property checks per month</li>
+          <li data-i18n="tier1_f2">Secure keyholding & mail forwarding</li>
+          <li data-i18n="tier1_f3">Post-storm & severe weather inspections</li>
+          <li data-i18n="tier1_f4">Airing out, humidity check & meter readings</li>
+          <li data-i18n="tier1_f5">Checking water, electricity & plumbing for leaks</li>
+          <li data-i18n="tier1_f6">Detailed digital photo report after each visit</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="price-card popular">
+        <div class="popular-badge" data-i18n="popular_badge">Most Popular</div>
+        <h3 data-i18n="tier2_title">Comfort Home</h3>
+        <ul class="price-features">
+          <li data-i18n="tier2_f1">4 weekly inspections per month</li>
+          <li data-i18n="tier2_f2">All features of the Essential tier included</li>
+          <li data-i18n="tier2_f3">Pre-arrival preparation (heating/AC, hot water, lights)</li>
+          <li data-i18n="tier2_f4">Post-departure walk-through, cleaning check & lockdown</li>
+          <li data-i18n="tier2_f5">Potted plant care, garden & pool visual status check</li>
+          <li data-i18n="tier2_f6">Up to 2 hours/month contractor coordination</li>
+          <li data-i18n="tier2_f7">Vehicle battery check & startup upon request</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="price-card">
+        <h3 data-i18n="tier3_title">Premium Rental Care</h3>
+        <ul class="price-features">
+          <li data-i18n="tier3_f1">Key handling & emergency guest hotline</li>
+          <li data-i18n="tier3_f2">Pre-stay prep & post-stay inspection for rental guests</li>
+          <li data-i18n="tier3_f3">Cleaning team & linen service supervision</li>
+          <li data-i18n="tier3_f4">Inventory check after guest departure</li>
+          <li data-i18n="tier3_f5">Custom concierge & local coordination for owners</li>
+        </ul>
+        <a href="#contact" class="price-btn" data-i18n="select_plan">Select Plan</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- A La Carte Section (Under Packages) -->
+  <section class="alacarte">
+    <div class="alacarte-box">
+      <h3 data-i18n="alacarte_title">A La Carte Services</h3>
+      <p class="alacarte-intro" data-i18n="alacarte_intro">Additional specialized services available upon request to complement your care package.</p>
+      
+      <div class="alacarte-grid">
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🔧</div>
+          <div class="alacarte-text" data-i18n="ala_1">Craftsman & Supplier Coordination</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🚨</div>
+          <div class="alacarte-text" data-i18n="ala_2">Emergency Call-outs & Alarm Response</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🚗</div>
+          <div class="alacarte-text" data-i18n="ala_3">Vehicle Maintenance & Battery Checks</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">📦</div>
+          <div class="alacarte-text" data-i18n="ala_4">Delivery Receipt & Furniture Assembly</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🌿</div>
+          <div class="alacarte-text" data-i18n="ala_5">Garden & Pool Supervision</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🧹</div>
+          <div class="alacarte-text" data-i18n="ala_6">Extra Deep Cleaning & Linen Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <h2 data-i18n="contact_title">Book a Free Property Consultation</h2>
+      <p class="contact-sub" data-i18n="contact_subtitle">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-info-box">
+          <h3 data-i18n="contact_info_title">Direct Contact</h3>
+          
+          <div class="info-item">
+            <span class="info-item-icon">📍</span>
+            <div>
+              <strong data-i18n="info_location_label">Location:</strong><br>
+              Vence, Côte d'Azur, France
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-item-icon">📧</span>
+            <div>
+              <strong data-i18n="info_email_label">Email:</strong><br>
+              <a href="mailto:contact@nordicazur.com">contact@nordicazur.com</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-item-icon">📞</span>
+            <div>
+              <strong data-i18n="info_phone_label">Phone / WhatsApp:</strong><br>
+              <a href="tel:+33672919159">+33 6 72 91 91 59</a>
+            </div>
+          </div>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
+          <div class="form-group">
+            <label data-i18n="form_name">Name *</label>
+            <input type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_email">Email *</label>
+            <input type="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_message">Property details & wishes *</label>
+            <textarea rows="4" placeholder="Tell us about your property location and required services..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit" data-i18n="form_button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with AI Disclaimer -->
+  <footer>
+    <p>&copy; NordicAzur. All rights reserved.</p>
+    <p class="ai-disclaimer" data-i18n="ai_disclaimer">This website uses AI-assisted automated translations to serve our international clientele in multiple languages.</p>
+  </footer>
+
+  <script>
+    var i18nTranslations = {
+      "en": {
+        "nav_services": "Services",
+        "nav_about": "About",
+        "nav_pricing": "Packages",
+        "nav_contact": "Contact",
+        "hero_tag": "NORDICAZUR · PROPERTY CARE & CONCIERGE",
+        "hero_title": "Peace of Mind for Your Home on the French Riviera",
+        "hero_lead": "Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.",
+        "hero_sublead": "Your home deserves attention, even when you are away.",
+        "hero_desc": "NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.",
+        "hero_check_1": "Regular property visits",
+        "hero_check_2": "Photo reports after inspections",
+        "hero_check_3": "Coordination of maintenance by agreement",
+        "hero_check_4": "Personal contact and clear communication",
+        "hero_cta": "Book a Free Property Consultation",
+        "cta_note": "Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.",
+        "features_title": "Why Choose NordicAzur?",
+        "feat_1_title": "Multilingual Bridge",
+        "feat_1_desc": "Seamless communication in Scandinavian languages and English paired with local French operational expertise. No language barrier with local artisans.",
+        "feat_2_title": "Digital Visual Reports",
+        "feat_2_desc": "Receive comprehensive status updates with photos and videos delivered directly to your phone after every inspection visit.",
+        "feat_3_title": "Hyper-Local Presence",
+        "feat_3_desc": "Based in Vence, providing rapid response times for weather alerts, emergency call-outs, and keyholding services.",
+        "about_title": "About NordicAzur – Peace of mind and quality in property care",
+        "about_intro": "Behind NordicAzur is Thomas – a dedicated and detail-oriented Dane who has lived in Vence and on the French Riviera with his family for many years.",
+        "about_lead": "With a background of more than 15 years of experience in the professional business sector within consulting and project management, NordicAzur is built on core values such as reliability, clear communication, and uncompromising quality.",
+        "about_why_title": "Why choose NordicAzur?",
+        "about_card1_title": "Scandinavian structure & punctuality",
+        "about_card1_desc": "You can rely on agreements being kept to the letter and your home being looked after to the highest standard.",
+        "about_card2_title": "Local presence & network",
+        "about_card2_desc": "With many years of permanent residence in the area, I have in-depth knowledge of local conditions, challenges, and selected suppliers.",
+        "about_card3_title": "Direct & transparent communication",
+        "about_card3_desc": "You get a dedicated personal contact. You always receive updates and reporting in your own language (Danish, English, or French) for complete peace of mind.",
+        "about_card4_title": "Personal engagement",
+        "about_card4_desc": "To me, your property is not just another number. NordicAzur is driven by a passion to deliver tailored, attentive service for both the big picture and the small details.",
+        "about_footer": "Whether you need supervision for your holiday home, coordination of craftsmen, or help with ongoing maintenance and practical tasks, NordicAzur is your trusted partner on the Côte d'Azur.",
+        "pricing_title": "Tailored Care Packages",
+        "pricing_subtitle": "Detailed care plans tailored to your property's specific needs.",
+        "tier1_title": "Essential Inspection",
+        "tier1_f1": "2 physical property checks per month",
+        "tier1_f2": "Secure keyholding & mail forwarding",
+        "tier1_f3": "Post-storm & severe weather inspections",
+        "tier1_f4": "Airing out, humidity check & meter readings",
+        "tier1_f5": "Checking water, electricity & plumbing for leaks",
+        "tier1_f6": "Detailed digital photo report after each visit",
+        "tier2_title": "Comfort Home",
+        "tier2_f1": "4 weekly inspections per month",
+        "tier2_f2": "All features of the Essential tier included",
+        "tier2_f3": "Pre-arrival preparation (heating/AC, hot water, lights)",
+        "tier2_f4": "Post-departure walk-through, cleaning check & lockdown",
+        "tier2_f5": "Potted plant care, garden & pool visual status check",
+        "tier2_f6": "Up to 2 hours/month contractor coordination",
+        "tier2_f7": "Vehicle battery check & startup upon request",
+        "tier3_title": "Premium Rental Care",
+        "tier3_f1": "Key handling & emergency guest hotline",
+        "tier3_f2": "Pre-stay prep & post-stay inspection for rental guests",
+        "tier3_f3": "Cleaning team & linen service supervision",
+        "tier3_f4": "Inventory check after guest departure",
+        "tier3_f5": "Custom concierge & local coordination for owners",
+        "popular_badge": "Most Popular",
+        "select_plan": "Select Plan",
+        "alacarte_title": "A La Carte Services",
+        "alacarte_intro": "Additional specialized services available upon request to complement your care package.",
+        "ala_1": "Craftsman & Supplier Coordination",
+        "ala_2": "Emergency Call-outs & Alarm Response",
+        "ala_3": "Vehicle Maintenance & Battery Checks",
+        "ala_4": "Delivery Receipt & Furniture Assembly",
+        "ala_5": "Garden & Pool Supervision",
+        "ala_6": "Extra Deep Cleaning & Linen Service",
+        "contact_title": "Book a Free Property Consultation",
+        "contact_subtitle": "Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.",
+        "contact_info_title": "Direct Contact",
+        "info_location_label": "Location",
+        "info_email_label": "Email",
+        "info_phone_label": "Phone / WhatsApp",
+        "form_name": "Name *",
+        "form_email": "Email *",
+        "form_message": "Property details & wishes *",
+        "form_button": "Send Message",
+        "ai_disclaimer": "This website uses AI-assisted automated translations to serve our international clientele in multiple languages."
+      }
+    };
+
+    function setLanguage(lang) {
+      try {
+        var dict = (i18nTranslations && i18nTranslations[lang]) ? i18nTranslations[lang] : (i18nTranslations ? i18nTranslations['en'] : null);
+        if (!dict) return;
+        
+        var elements = document.querySelectorAll('[data-i18n]');
+        for (var i = 0; i < elements.length; i++) {
+          var el = elements[i];
+          var key = el.getAttribute('data-i18n');
+          if (dict[key]) {
+            el.textContent = dict[key];
+          }
+        }
+        var select = document.getElementById('langSelect');
+        if (select) select.value = lang;
+      } catch (e) {
+        console.error("Language switch error:", e);
+      }
+    }
+
+    function changeLanguage(lang) {
+      try {
+        localStorage.setItem('nordicazur_lang', lang);
+      } catch (e) {}
+      setLanguage(lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var savedLang = 'en';
+      try {
+        savedLang = localStorage.getItem('nordicazur_lang') || 'en';
+      } catch (e) {}
+      setLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>
