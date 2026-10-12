@@ -925,12 +925,9 @@
 };
 
 <script>
-    // i18nTranslations opdateres automatisk af update-translations.js
-    
     function applyLanguage(targetLang) {
       if (!window.i18nTranslations) return;
 
-      // Håndterer både små og store sprogkoder (f.eks. 'da' eller 'DA')
       const langKey = Object.keys(i18nTranslations).find(
         k => k.toLowerCase() === targetLang.toLowerCase()
       );
@@ -952,12 +949,10 @@
       const langSelect = document.getElementById('lang-select');
       if (!langSelect) return;
 
-      // 1. Skift sprog når brugeren vælger i dropdown
       langSelect.addEventListener('change', function() {
         applyLanguage(this.value);
       });
 
-      // 2. Kør oversættelsen med det samme hvis dropdown ikke står på engelsk
       if (langSelect.value && langSelect.value.toLowerCase() !== 'en') {
         applyLanguage(langSelect.value);
       }
