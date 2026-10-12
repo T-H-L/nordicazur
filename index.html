@@ -925,36 +925,28 @@
 };
 
 <script>
-    // i18nTranslations objektet genereres af DeepL scriptet ovenfor
-
     function applyLanguage(targetLang) {
       if (!window.i18nTranslations) return;
-
       const langKey = Object.keys(i18nTranslations).find(
         k => k.toLowerCase() === targetLang.toLowerCase()
       );
-
       const translations = i18nTranslations[langKey];
       if (!translations) return;
-
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[key]) {
           el.innerHTML = translations[key];
         }
       });
-
       document.documentElement.lang = targetLang;
     }
 
     document.addEventListener('DOMContentLoaded', function() {
       const langSelect = document.getElementById('lang-select');
       if (!langSelect) return;
-
       langSelect.addEventListener('change', function() {
         applyLanguage(this.value);
       });
-
       if (langSelect.value && langSelect.value.toLowerCase() !== 'en') {
         applyLanguage(langSelect.value);
       }
