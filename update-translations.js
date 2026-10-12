@@ -94,13 +94,11 @@ async function run() {
 
     for (const [key, enValue] of Object.entries(enKeys)) {
       try {
-        // DeepL forventer 'NB' for Norsk Bokmål
         const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
         const translatedText = await translateText(enValue, deeplLang);
         translations[lang][key] = translatedText;
         console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
         
-        // Vent 150 ms før næste kald så vi ikke rammer rate limit
         await sleep(150);
       } catch (err) {
         console.error(`Fejl ved oversættelse af ${key} til ${lang}:`, err);
@@ -109,10 +107,13 @@ async function run() {
   }
 
   const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
-  const updatedContent = content.substring(0, startIndex) + updatedJs + content.substring(jsonEnd + 2);
+  
+  // Bevar alt det indhold der kommer efter i18nTranslations objektet (inkl. vores sprogskifter-script)
+  const restOfContent = content.substring(jsonEnd + 2);
+  const updatedContent = content.substring(0, startIndex) + updatedJs + '\n' + restOfContent;
 
   fs.writeFileSync(HTML_FILE, updatedContent, 'utf8');
-  console.log("Succes! index.html er opdateret med alle oversættelser.");
+  console.log("Succes! index.html er opdateret med alle oversættelser og klient-scriptet er bevaret.");
 }
 
 run();
