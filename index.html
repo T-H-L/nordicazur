@@ -924,9 +924,8 @@
   }
 };
 
-    // Sprogskifter-logik
-    document.getElementById('lang-select').addEventListener('change', function() {
-      const lang = this.value;
+// Sprogskifter-logik
+    function applyLanguage(lang) {
       const translations = i18nTranslations[lang];
       if (!translations) return;
 
@@ -935,6 +934,21 @@
         if (translations[key]) {
           el.innerHTML = translations[key];
         }
+      });
+      document.documentElement.lang = lang;
+    }
+
+    const langSelect = document.getElementById('lang-select');
+
+    // 1. Kør oversættelse ved skift i dropdown
+    langSelect.addEventListener('change', function() {
+      applyLanguage(this.value);
+    });
+
+    // 2. Kør oversættelse med det samme, hvis et andet sprog end engelsk er valgt
+    if (langSelect.value !== 'en') {
+      applyLanguage(langSelect.value);
+    }
       });
     });
   </script>
