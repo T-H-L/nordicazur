@@ -2,6 +2,7 @@ const fs = require('fs');
 const https = require('https');
 
 const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
+const HTML_FILE = 'index.html';
 const TRANSLATIONS_FILE = 'translations.js';
 
 if (!DEEPL_API_KEY) {
@@ -54,43 +55,42 @@ function translateText(text, targetLang) {
   });
 }
 
+function extractEnKeysFromHtml(htmlContent) {
+  const enKeys = {};
+  // Finder alle elementer med data-i18n="nøglenavn">Engelsk tekst</...
+  const regex = /data-i18n="([^"]+)">([\s\S]*?)<\//g;
+  let match;
+
+  while ((match = regex.exec(htmlContent)) !== null) {
+    const key = match[1];
+    let text = match[2].trim();
+    // Rens evt. ekstra HTML/mellemrum
+    text = text.replace(/\s+/g, ' ');
+    if (key && text) {
+      enKeys[key] = text;
+    }
+  }
+
+  return enKeys;
+}
+
 async function run() {
-  let content = fs.readFileSync(TRANSLATIONS_FILE, 'utf8');
+  console.log("Læser engelske tekster ud fra index.html...");
+  const htmlContent = fs.readFileSync(HTML_FILE, 'utf8');
+  const enKeys = extractEnKeysFromHtml(htmlContent);
 
-  const startMarker = 'window.i18nTranslations =';
-  const startIndex = content.indexOf(startMarker);
+  console.log(`Fandt ${Object.keys(enKeys).length} nøgler i index.html.`);
 
-  if (startIndex === -1) {
-    console.error("Kunne ikke finde window.i18nTranslations i translations.js");
-    process.exit(1);
-  }
+  const translations = {
+    en: enKeys
+  };
 
-  const jsonStart = content.indexOf('{', startIndex);
-  // Find den sidste lukkende klamme i filen
-  const jsonEnd = content.lastIndexOf('}');
-
-  if (jsonStart === -1 || jsonEnd === -1) {
-    console.error("Kunne ikke afgrænse translations objektet korrekt.");
-    process.exit(1);
-  }
-
-  const rawObjectStr = content.substring(jsonStart, jsonEnd + 1);
-
-  let translations;
-  try {
-    translations = Function('"use strict";return (' + rawObjectStr + ')')();
-  } catch (e) {
-    console.error("Syntaksfejl ved indlæsning af translations:", e);
-    process.exit(1);
-  }
-
-  const enKeys = translations.en || {};
   const languages = ['da', 'fr', 'nl', 'de', 'sv', 'no'];
 
-  console.log("Kører fuld opdatering af sprog ud fra 'en'...");
+  console.log("Kører oversættelse via DeepL...");
 
   for (const lang of languages) {
-    if (!translations[lang]) translations[lang] = {};
+    translations[lang] = {};
 
     for (const [key, enValue] of Object.entries(enKeys)) {
       try {
@@ -98,7 +98,7 @@ async function run() {
         const translatedText = await translateText(enValue, deeplLang);
         translations[lang][key] = translatedText;
         console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
-        
+
         await sleep(150);
       } catch (err) {
         console.error(`Fejl ved oversættelse af ${key} til ${lang}:`, err);
@@ -107,7 +107,7 @@ async function run() {
   }
 
   const updatedJs = 'window.i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
-  
+
   fs.writeFileSync(TRANSLATIONS_FILE, updatedJs, 'utf8');
   console.log("Succes! translations.js er opdateret automatisk.");
 }
