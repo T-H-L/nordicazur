@@ -2,7 +2,7 @@ const fs = require('fs');
 const https = require('https');
 
 const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
-const HTML_FILE = 'index.html';
+const TRANSLATIONS_FILE = 'translations.js';
 
 if (!DEEPL_API_KEY) {
   console.error("Fejl: DEEPL_API_KEY mangler.");
@@ -55,21 +55,22 @@ function translateText(text, targetLang) {
 }
 
 async function run() {
-  let content = fs.readFileSync(HTML_FILE, 'utf8');
+  let content = fs.readFileSync(TRANSLATIONS_FILE, 'utf8');
 
-  const startMarker = 'const i18nTranslations =';
+  const startMarker = 'window.i18nTranslations =';
   const startIndex = content.indexOf(startMarker);
 
   if (startIndex === -1) {
-    console.error("Kunne ikke finde i18nTranslations i index.html");
+    console.error("Kunne ikke finde window.i18nTranslations i translations.js");
     process.exit(1);
   }
 
   const jsonStart = content.indexOf('{', startIndex);
-  const jsonEnd = content.indexOf('};', jsonStart);
+  // Find den sidste lukkende klamme i filen
+  const jsonEnd = content.lastIndexOf('}');
 
   if (jsonStart === -1 || jsonEnd === -1) {
-    console.error("Kunne ikke afgrænse i18nTranslations objektet korrekt.");
+    console.error("Kunne ikke afgrænse translations objektet korrekt.");
     process.exit(1);
   }
 
@@ -79,7 +80,7 @@ async function run() {
   try {
     translations = Function('"use strict";return (' + rawObjectStr + ')')();
   } catch (e) {
-    console.error("Syntaksfejl ved indlæsning af i18nTranslations:", e);
+    console.error("Syntaksfejl ved indlæsning af translations:", e);
     process.exit(1);
   }
 
@@ -105,18 +106,10 @@ async function run() {
     }
   }
 
- const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
+  const updatedJs = 'window.i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
   
-  const scriptTagIndex = content.indexOf('<script>', startIndex);
-  if (scriptTagIndex === -1) {
-    console.error("Kunne ikke finde <script> efter i18nTranslations i index.html");
-    process.exit(1);
-  }
-
-  const updatedContent = content.substring(0, startIndex) + updatedJs + '\n\n  ' + content.substring(scriptTagIndex);
-
-  fs.writeFileSync(HTML_FILE, updatedContent, 'utf8');
-  console.log("Succes! i18nTranslations er opdateret, og resten af index.html er intakt.");
+  fs.writeFileSync(TRANSLATIONS_FILE, updatedJs, 'utf8');
+  console.log("Succes! translations.js er opdateret automatisk.");
 }
 
 run();
