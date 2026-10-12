@@ -9,7 +9,6 @@ if (!DEEPL_API_KEY) {
   process.exit(1);
 }
 
-// Hjælpefunktion til pause mellem kald så API'et ikke overbelastes
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function translateText(text, targetLang) {
@@ -106,46 +105,13 @@ async function run() {
     }
   }
 
- const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
+  const updatedJs = 'const i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
   
-  // Vi bygger en ren, fast afslutning på index.html, der aldrig fejler
-  const clientScript = `
-  <script>
-    function applyLanguage(targetLang) {
-      if (!window.i18nTranslations) return;
-      const langKey = Object.keys(i18nTranslations).find(
-        k => k.toLowerCase() === targetLang.toLowerCase()
-      );
-      const translations = i18nTranslations[langKey];
-      if (!translations) return;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[key]) {
-          el.innerHTML = translations[key];
-        }
-      });
-      document.documentElement.lang = targetLang;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const langSelect = document.getElementById('lang-select');
-      if (!langSelect) return;
-      langSelect.addEventListener('change', function() {
-        applyLanguage(this.value);
-      });
-      if (langSelect.value && langSelect.value.toLowerCase() !== 'en') {
-        applyLanguage(langSelect.value);
-      }
-    });
-  </script>
-</body>
-</html>`;
-
-  // Find hvor selve body/html slutter, så vi fjerner alt det gamle rod i bunden og erstatter det rent
-  const bodyCloseIndex = content.lastIndexOf('</body>');
-  const baseContent = bodyCloseIndex !== -1 ? content.substring(0, bodyCloseIndex) : content.substring(0, startIndex);
-
-  const updatedContent = baseContent + '\n  ' + updatedJs + '\n' + clientScript;
+  // DETTE ER AFGØRENDE: Vi udskifter KUN selve i18nTranslations-objektet og bevarer alt andet i filen uændret!
+  const updatedContent = content.substring(0, startIndex) + updatedJs + content.substring(jsonEnd + 2);
 
   fs.writeFileSync(HTML_FILE, updatedContent, 'utf8');
-  console.log("Succes! index.html er opdateret med oversættelser og korrekt klient-script.");
+  console.log("Succes! i18nTranslations er opdateret, og resten af index.html er intakt.");
+}
+
+run();
