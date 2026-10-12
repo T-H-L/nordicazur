@@ -924,9 +924,18 @@
   }
 };
 
-// Sprogskifter-logik
-    function applyLanguage(lang) {
-      const translations = i18nTranslations[lang];
+<script>
+    // i18nTranslations opdateres automatisk af update-translations.js
+    
+    function applyLanguage(targetLang) {
+      if (!window.i18nTranslations) return;
+
+      // Håndterer både små og store sprogkoder (f.eks. 'da' eller 'DA')
+      const langKey = Object.keys(i18nTranslations).find(
+        k => k.toLowerCase() === targetLang.toLowerCase()
+      );
+
+      const translations = i18nTranslations[langKey];
       if (!translations) return;
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -935,21 +944,23 @@
           el.innerHTML = translations[key];
         }
       });
-      document.documentElement.lang = lang;
+
+      document.documentElement.lang = targetLang;
     }
 
-    const langSelect = document.getElementById('lang-select');
+    document.addEventListener('DOMContentLoaded', function() {
+      const langSelect = document.getElementById('lang-select');
+      if (!langSelect) return;
 
-    // 1. Kør oversættelse ved skift i dropdown
-    langSelect.addEventListener('change', function() {
-      applyLanguage(this.value);
-    });
-
-    // 2. Kør oversættelse med det samme, hvis et andet sprog end engelsk er valgt
-    if (langSelect.value !== 'en') {
-      applyLanguage(langSelect.value);
-    }
+      // 1. Skift sprog når brugeren vælger i dropdown
+      langSelect.addEventListener('change', function() {
+        applyLanguage(this.value);
       });
+
+      // 2. Kør oversættelsen med det samme hvis dropdown ikke står på engelsk
+      if (langSelect.value && langSelect.value.toLowerCase() !== 'en') {
+        applyLanguage(langSelect.value);
+      }
     });
   </script>
 </body>
