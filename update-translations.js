@@ -2,8 +2,8 @@ const fs = require('fs');
 const https = require('https');
 
 const DEEPL_API_KEY = process.env.DEEPL_API_KEY;
-const HTML_FILE = 'index.html';
 const TRANSLATIONS_FILE = 'translations.js';
+const HTML_FILE = 'index.html';
 
 if (!DEEPL_API_KEY) {
   console.error("Fejl: DEEPL_API_KEY mangler.");
@@ -55,50 +55,33 @@ function translateText(text, targetLang) {
   });
 }
 
-function extractEnKeysFromHtml(htmlContent) {
+async function run() {
+  const htmlContent = fs.readFileSync(HTML_FILE, 'utf8');
   const enKeys = {};
-  // Finder alle elementer med data-i18n="nøglenavn">Engelsk tekst</...
   const regex = /data-i18n="([^"]+)">([\s\S]*?)<\//g;
   let match;
 
   while ((match = regex.exec(htmlContent)) !== null) {
     const key = match[1];
-    let text = match[2].trim();
-    // Rens evt. ekstra HTML/mellemrum
-    text = text.replace(/\s+/g, ' ');
+    let text = match[2].trim().replace(/\s+/g, ' ');
     if (key && text) {
       enKeys[key] = text;
     }
   }
 
-  return enKeys;
-}
-
-async function run() {
-  console.log("Læser engelske tekster ud fra index.html...");
-  const htmlContent = fs.readFileSync(HTML_FILE, 'utf8');
-  const enKeys = extractEnKeysFromHtml(htmlContent);
-
   console.log(`Fandt ${Object.keys(enKeys).length} nøgler i index.html.`);
 
-  const translations = {
-    en: enKeys
-  };
-
+  const translations = { en: enKeys };
   const languages = ['da', 'fr', 'nl', 'de', 'sv', 'no'];
-
-  console.log("Kører oversættelse via DeepL...");
 
   for (const lang of languages) {
     translations[lang] = {};
-
     for (const [key, enValue] of Object.entries(enKeys)) {
       try {
         const deeplLang = lang === 'no' ? 'NB' : lang.toUpperCase();
         const translatedText = await translateText(enValue, deeplLang);
         translations[lang][key] = translatedText;
         console.log(`[${lang.toUpperCase()}] ${key} -> ${translatedText}`);
-
         await sleep(150);
       } catch (err) {
         console.error(`Fejl ved oversættelse af ${key} til ${lang}:`, err);
@@ -107,9 +90,8 @@ async function run() {
   }
 
   const updatedJs = 'window.i18nTranslations = ' + JSON.stringify(translations, null, 2) + ';';
-
   fs.writeFileSync(TRANSLATIONS_FILE, updatedJs, 'utf8');
-  console.log("Succes! translations.js er opdateret automatisk.");
+  console.log("Succes! translations.js er opdateret.");
 }
 
 run();
