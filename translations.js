@@ -52,7 +52,7 @@ window.i18nTranslations = {
     "popular_badge": "Most Popular",
     "tier2_title": "Comfort Home",
     "tier2_price": "€220 <span>/ month",
-    "tier2_f1": "4 weekly inspections per month (weekly cadence)",
+    "tier2_f1": "4 inspections per month (weekly cadence)",
     "tier2_f2": "All features from Essential Inspection included",
     "tier2_f3": "Pre-arrival preparation (hot water, heating/AC, lights)",
     "tier2_f4": "Post-departure walkthrough & secure property lockdown",
