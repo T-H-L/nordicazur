@@ -6,7 +6,7 @@ window.i18nTranslations = {
     "nav_contact": "Contact",
     "hero_tag": "NORDICAZUR · PROPERTY CARE & CONCIERGE",
     "hero_title": "Peace of Mind for Your Home on the French Riviera",
-    "hero_lead": "Reliable property care for second-home owners around Vence and Saint-Paul-de-Vence.",
+    "hero_lead": "Reliable property care for second-home owners around Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer and nearby villages and cities.",
     "hero_sublead": "Your home deserves attention, even when you are away.",
     "hero_desc": "NordicAzur provides personal property inspections, clear photo reports and practical local support, helping you keep an eye on your home throughout the year.",
     "hero_check_1": "Regular property visits",
