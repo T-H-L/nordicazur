@@ -367,4 +367,338 @@
   <section class="alacarte">
     <div class="alacarte-box">
       <h3 data-i18n="alacarte_title">A La Carte Services</h3>
-      <p class="alacarte-intro" data-i18n="alacarte
+      <p class="alacarte-intro" data-i18n="alacarte_intro">Additional specialized services available upon request to complement your care package.</p>
+      
+      <div class="alacarte-grid">
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🔧</div>
+          <div class="alacarte-text" data-i18n="ala_1">Craftsman & Supplier Coordination</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🚨</div>
+          <div class="alacarte-text" data-i18n="ala_2">Emergency Call-outs & Alarm Response</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🚗</div>
+          <div class="alacarte-text" data-i18n="ala_3">Vehicle Maintenance & Battery Checks</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">📦</div>
+          <div class="alacarte-text" data-i18n="ala_4">Delivery Receipt & Furniture Assembly</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🌿</div>
+          <div class="alacarte-text" data-i18n="ala_5">Garden & Pool Supervision</div>
+        </div>
+        <div class="alacarte-item">
+          <div class="alacarte-icon">🧹</div>
+          <div class="alacarte-text" data-i18n="ala_6">Extra Deep Cleaning & Linen Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <h2 data-i18n="contact_title">Book a Free Property Consultation</h2>
+      <p class="contact-sub" data-i18n="contact_subtitle">Tell us about your property and how often you would like it checked. We will discuss a service plan that suits your needs.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-info-box">
+          <h3 data-i18n="contact_info_title">Direct Contact</h3>
+          
+          <div class="info-item">
+            <span class="info-item-icon">📍</span>
+            <div>
+              <strong data-i18n="info_location_label">Location:</strong><br>
+              120 Chemin Sainte Anne, 06140 Vence, France
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-item-icon">📧</span>
+            <div>
+              <strong data-i18n="info_email_label">Email:</strong><br>
+              <a href="mailto:contact@nordicazur.com">contact@nordicazur.com</a>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-item-icon">📞</span>
+            <div>
+              <strong data-i18n="info_phone_label">Phone / WhatsApp:</strong><br>
+              <a href="tel:+33672919159">+33 6 72 91 91 59</a>
+            </div>
+          </div>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
+          <div class="form-group">
+            <label data-i18n="form_name">Name *</label>
+            <input type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_email">Email *</label>
+            <input type="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_message">Property details & wishes *</label>
+            <textarea rows="4" placeholder="Tell us about your property location and required services..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit" data-i18n="form_button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; NordicAzur. All rights reserved.</p>
+    <p class="ai-disclaimer" data-i18n="ai_disclaimer">This website uses AI-assisted automated translations to serve our international clientele in multiple languages.</p>
+  </footer>
+
+  <script>
+    // Sprogordbog med understøttelse af alle dine ønskede sprog
+    var i18nTranslations = {
+      "en": {}, // Udfyldes automatisk fra HTML ved start
+      
+      "da": {
+        "nav_services": "Tjenester",
+        "nav_about": "Om os",
+        "nav_pricing": "Pakker",
+        "nav_contact": "Kontakt",
+        "hero_tag": "NORDICAZUR · EJENDOMSSUPERVISION & CONCIERGE",
+        "hero_title": "Tryghed for din bolig på Den Franske Riviera",
+        "hero_lead": "Pålidelig ejendomsservice for husejere omkring Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer og nærliggende byer.",
+        "hero_sublead": "Din bolig fortjener opmærksomhed – også når du ikke er her.",
+        "hero_desc": "NordicAzur tilbyder personlige boligtjek, klare fotorapporter og praktisk lokal hjælp, så du kan holde opsyn med din bolig hele året.",
+        "hero_check_1": "Regelmæssige boligtjek",
+        "hero_check_2": "Fotorapporter efter besigtigelse",
+        "hero_check_3": "Koordinering af håndværkere efter aftale",
+        "hero_check_4": "Personlig kontakt og klar kommunikation",
+        "hero_cta": "Book en gratis uforpligtende konsultation",
+        "cta_note": "Fortæl os om din bolig og dine behov, så skræddersyer vi en løsning.",
+        "features_title": "Hvorfor vælge NordicAzur?",
+        "feat_1_title": "Sproglig brobygger",
+        "feat_1_desc": "Sømløs kommunikation på skandinavisk og engelsk kombineret med lokalt fransk kendskab. Ingen sprogbarriere over for håndværkere.",
+        "feat_2_title": "Digitale fotorapporter",
+        "feat_2_desc": "Modtag grundige statusopdateringer med billeder og videoer direkte på din telefon efter hvert besøg.",
+        "feat_3_title": "Lokalt tilhørsforhold",
+        "feat_3_desc": "Med base i Vence sikres hurtig reaktion ved vejrudsving, nøgleopbevaring og uforudsete hændelser.",
+        "pricing_title": "Skræddersyede servicepakker",
+        "pricing_subtitle": "Detaljerede planer tilpasset din ejendoms specifikke behov.",
+        "contact_title": "Book en gratis konsultation",
+        "contact_subtitle": "Fortæl os om din bolig og dine ønsker, så finder vi den rette løsning.",
+        "form_name": "Navn *",
+        "form_email": "E-mail *",
+        "form_message": "Ejendommens detaljer & ønsker *"
+      },
+
+      "fr": {
+        "nav_services": "Services",
+        "nav_about": "À propos",
+        "nav_pricing": "Forfaits",
+        "nav_contact": "Contact",
+        "hero_tag": "NORDICAZUR · GARDIENNAGE & CONCIERGERIE",
+        "hero_title": "Tranquillité d'esprit pour votre propriété sur la Côte d'Azur",
+        "hero_lead": "Surveillance de propriété fiable pour les propriétaires secondaires autour de Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer et environs.",
+        "hero_sublead": "Votre maison mérite de l'attention, même en votre absence.",
+        "hero_desc": "NordicAzur propose des inspections personnelles, des rapports photos clairs et un soutien local pratique pour garder un œil sur votre maison toute l'année.",
+        "hero_check_1": "Visites régulières de la propriété",
+        "hero_check_2": "Rapports photo après chaque inspection",
+        "hero_check_3": "Coordination des artisans selon accord",
+        "hero_check_4": "Contact personnel et communication claire",
+        "hero_cta": "Réserver une consultation gratuite",
+        "contact_title": "Réserver une consultation gratuite",
+        "form_name": "Nom *",
+        "form_email": "E-mail *",
+        "form_message": "Détails de la propriété *"
+      },
+
+      "nl": {
+        "nav_services": "Diensten",
+        "nav_about": "Over ons",
+        "nav_pricing": "Pakketten",
+        "nav_contact": "Contact",
+        "hero_tag": "NORDICAZUR · BEHEER & CONCIERGE",
+        "hero_title": "Zorgeloos genieten van uw woning aan de Franse Rivièra",
+        "hero_lead": "Betrouwbaar vastgoedbeheer voor huiseigenaren rondom Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer en nabijgelegen dorpen.",
+        "hero_sublead": "Uw woning verdient aandacht, ook als u er niet bent.",
+        "hero_desc": "NordicAzur biedt persoonlijke woninginspecties, duidelijke fotorapportages en praktische lokale ondersteuning om uw eigendom het hele jaar door in de gaten te houden.",
+        "hero_check_1": "Reguliere woninginspecties",
+        "hero_check_2": "Fotorapportages na inspectie",
+        "hero_check_3": "Coördinatie van onderhoud in overleg",
+        "hero_check_4": "Persoonlijk contact en heldere communicatie",
+        "hero_cta": "Boek een gratis adviesgesprek",
+        "contact_title": "Boek een gratis adviesgesprek",
+        "form_name": "Naam *",
+        "form_email": "E-mail *",
+        "form_message": "Woningdetails & wensen *"
+      },
+
+      "sv": {
+        "nav_services": "Tjänster",
+        "nav_about": "Om oss",
+        "nav_pricing": "Paket",
+        "nav_contact": "Kontakt",
+        "hero_tag": "NORDICAZUR · FASTIGHETSSKÖTSEL & CONCIERGE",
+        "hero_title": "Trygghet för ditt hem på franska rivieran",
+        "hero_lead": "Pålitlig fastighetsservice för fritidshusägare runt Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer och närliggande orter.",
+        "hero_sublead": "Ditt hem förtjänar uppmärksamhet, även när du är bortrest.",
+        "hero_desc": "NordicAzur erbjuder personliga fastighetsinspektioner, tydliga fotorapporter och praktiskt lokalt stöd så att du kan hålla uppsikt över ditt hem året runt.",
+        "hero_check_1": "Regelbundna fastighetsbesök",
+        "hero_check_2": "Fotorapporter efter inspektioner",
+        "hero_check_3": "Samordning av underhåll efter överenskommelse",
+        "hero_check_4": "Personlig kontakt och tydlig kommunikation",
+        "hero_cta": "Boka en kostnadsfri konsultation",
+        "contact_title": "Boka en kostnadsfri konsultation",
+        "form_name": "Namn *",
+        "form_email": "E-post *",
+        "form_message": "Fastighetsdetaljer & önskemål *"
+      },
+
+      "no": {
+        "nav_services": "Tjenester",
+        "nav_about": "Om oss",
+        "nav_pricing": "Pakker",
+        "nav_contact": "Kontakt",
+        "hero_tag": "NORDICAZUR · EIENDOMSTILSYN & CONCIERGE",
+        "hero_title": "Trygghet for din bolig på Den franske riviera",
+        "hero_lead": "Pålitelig eiendomsservice for huseiere rundt Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer og nærliggende steder.",
+        "hero_sublead": "Boligen din fortjener oppmerksomhet, også når du er borte.",
+        "hero_desc": "NordicAzur tilbyr personlige boliginspeksjoner, klare fotorapporter og praktisk lokal støtte for å holde øye med boligen din gjennom hele året.",
+        "hero_check_1": "Regelmessige boligbesøk",
+        "hero_check_2": "Fotorapporter etter inspeksjoner",
+        "hero_check_3": "Koordinering av vedlikehold etter avtale",
+        "hero_check_4": "Personlig kontakt og tydelig kommunikasjon",
+        "hero_cta": "Bestill en gratis konsultasjon",
+        "contact_title": "Bestill en gratis konsultasjon",
+        "form_name": "Navn *",
+        "form_email": "E-post *",
+        "form_message": "Eiendomsdetaljer og ønske *"
+      },
+
+      "de": {
+        "nav_services": "Dienstleistungen",
+        "nav_about": "Über uns",
+        "nav_pricing": "Pakete",
+        "nav_contact": "Kontakt",
+        "hero_tag": "NORDICAZUR · HAUSBETREUUNG & CONCIERGE",
+        "hero_title": "Sorglos für Ihr Zuhause an der Französischen Riviera",
+        "hero_lead": "Zuverlässige Immobilienbetreuung für Zweitwohnsitzbesitzer in Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer und Umgebung.",
+        "hero_sublead": "Ihr Zuhause verdient Aufmerksamkeit, auch wenn Sie nicht da sind.",
+        "hero_desc": "NordicAzur bietet persönliche Immobilieninspektionen, klare Fotorapporte und praktische lokale Unterstützung, damit Sie Ihr Anwesen das ganze Jahr über im Blick behalten.",
+        "hero_check_1": "Regelmäßige Immobilienbesichtigungen",
+        "hero_check_2": "Fotorapporte nach Inspektionen",
+        "hero_check_3": "Koordination von Handwerkern nach Absprache",
+        "hero_check_4": "Persönlicher Kontakt und klare Kommunikation",
+        "hero_cta": "Kostenlose Beratung anfordern",
+        "contact_title": "Kostenlose Beratung anfordern",
+        "form_name": "Name *",
+        "form_email": "E-Mail *",
+        "form_message": "Immobiliendetails & Wünsche *"
+      },
+
+      "it": {
+        "nav_services": "Servizi",
+        "nav_about": "Chi siamo",
+        "nav_pricing": "Pacchetti",
+        "nav_contact": "Contatti",
+        "hero_tag": "NORDICAZUR · CURA DELLA PROPRIETÀ & CONCIERGE",
+        "hero_title": "Tranquillità per la tua casa sulla Costa Azzurra",
+        "hero_lead": "Gestione immobiliare affidabile per proprietari di seconde case a Vence, Saint-Paul-de-Vence, Tourrettes-sur-Loup, Saint-Jeannet, La Colle-sur-Loup, Cagnes-sur-Mer e dintorni.",
+        "hero_sublead": "La tua casa merita attenzione, anche quando sei via.",
+        "hero_desc": "NordicAzur offre ispezioni immobiliari personali, report fotografici chiari e supporto locale pratico per tenere d'occhio la tua proprietà durante tutto l'anno.",
+        "hero_check_1": "Visite regolari della proprietà",
+        "hero_check_2": "Report fotografici dopo le ispezioni",
+        "hero_check_3": "Coordinamento della manutenzione su accordo",
+        "hero_check_4": "Contatto personale e comunicazione chiara",
+        "hero_cta": "Prenota una consulenza gratuita",
+        "contact_title": "Prenota una consulenza gratuita",
+        "form_name": "Nome *",
+        "form_email": "E-mail *",
+        "form_message": "Dettagli della proprietà *"
+      },
+
+      "ru": {
+        "nav_services": "Услуги",
+        "nav_about": "О нас",
+        "nav_pricing": "Пакеты",
+        "nav_contact": "Контакты",
+        "hero_tag": "NORDICAZUR · УХОД ЗА НЕДВИЖИМОСТЬЮ И КОНСЬЕРЖ",
+        "hero_title": "Спокойствие за ваш дом на Лазурном Берегу",
+        "hero_lead": "Надежный уход за недвижимостью для владельцев вторых домов в Вансе, Сен-Поль-де-Ванс, Туррет-сюр-Луп, Сент-Жанне, Ла-Коль-сюр-Луп, Кань-сюр-Мер и окрестностях.",
+        "hero_sublead": "Ваш дом заслуживает внимания, даже когда вас нет рядом.",
+        "hero_desc": "NordicAzur предоставляет услуги личного осмотра недвижимости, подробные фотоотчеты и практическую местную поддержку.",
+        "hero_check_1": "Регулярные осмотры объекта",
+        "hero_check_2": "Фотоотчеты после проверок",
+        "hero_check_3": "Координация ремонтных работ по соглашению",
+        "hero_check_4": "Личный контакт и четкая коммуникация",
+        "hero_cta": "Заказать бесплатную консультацию",
+        "contact_title": "Заказать бесплатную консультацию",
+        "form_name": "Имя *",
+        "form_email": "Эл. почта *",
+        "form_message": "Детали недвижимости *"
+      }
+    };
+
+    // Automatisk indsamling af engelske standardtekster fra HTML
+    function initTranslations() {
+      var elements = document.querySelectorAll('[data-i18n]');
+      if (!i18nTranslations["en"]) i18nTranslations["en"] = {};
+      
+      for (var i = 0; i < elements.length; i++) {
+        var el = elements[i];
+        var key = el.getAttribute('data-i18n');
+        if (!i18nTranslations["en"][key]) {
+          i18nTranslations["en"][key] = el.textContent.trim();
+        }
+      }
+    }
+
+    function setLanguage(lang) {
+      try {
+        initTranslations();
+        var dict = i18nTranslations[lang] ? i18nTranslations[lang] : i18nTranslations["en"];
+        if (!dict) return;
+        
+        var elements = document.querySelectorAll('[data-i18n]');
+        for (var i = 0; i < elements.length; i++) {
+          var el = elements[i];
+          var key = el.getAttribute('data-i18n');
+          
+          if (dict[key]) {
+            el.textContent = dict[key];
+          } else if (i18nTranslations["en"][key]) {
+            el.textContent = i18nTranslations["en"][key];
+          }
+        }
+
+        var selects = document.querySelectorAll('.lang-select');
+        for (var j = 0; j < selects.length; j++) {
+          selects[j].value = lang;
+        }
+      } catch (e) {
+        console.error("Language switch error:", e);
+      }
+    }
+
+    function changeLanguage(lang) {
+      try {
+        localStorage.setItem('nordicazur_lang', lang);
+      } catch (e) {}
+      setLanguage(lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initTranslations();
+      var savedLang = 'en';
+      try {
+        savedLang = localStorage.getItem('nordicazur_lang') || 'en';
+      } catch (e) {}
+      setLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>
